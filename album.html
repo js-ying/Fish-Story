@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="一個梁靜茹的粉絲所做的梁靜茹介紹網站，在這裡讓您瞭解梁靜茹的點點滴滴與各種魅力。">
+    <meta name="author" content="光Guand">
+
+    <title>歷代專輯 - 梁靜茹 FishLeong</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<!-- Brand and toggle get grouped for better mobile display -->
+	  	<div class="navbar-header">
+	    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	      		<span class="sr-only">Toggle navigation</span>
+	      		<span class="icon-bar"></span>
+	    		<span class="icon-bar"></span>
+	      		<span class="icon-bar"></span>
+	    	</button>
+	    	<a class="navbar-brand" href="./index.html">梁靜茹 FishLeong</a>
+	  	</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+	 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+			      	<li><a href="singer.html">歌手介紹</a></li>
+			      	<li><a href="photo.html">照片欣賞</a></li>
+					<li><a href="class.html">經典歌曲</a></li>
+			      	<li class="active"><a href="album.html">歷代專輯</a></li>
+	    	</ul>
+
+		<form class="navbar-form navbar-left" role="search">
+	      		<div class="form-group">
+	        			<input type="text" class="form-control" placeholder="找歌詞">
+	      		</div>
+	      	<button type="submit" class="btn btn-default">搜尋</button>
+	    	</form>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">其他 <span class="caret" style="margin-right: 10px"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="about.html">關於本站</a></li>
+					<li><a href="contact.php">與我聯絡</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<div id="album">
+
+		<button type="button" class="btn btn-primary" onClick="show_all()">全部顯示</button>
+		<button type="button" class="btn btn-default" onClick="show_record()">錄音室專輯</button>
+		<button type="button" class="btn btn-default" onClick="show_live()">演唱會CD</button>
+		<button type="button" class="btn btn-default" onClick="show_special()">精選輯</button>
+
+		<div class="row" id="albums-display">
+		</div>
+
+	</div>
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+					作詞者：<span class="song-writer-value"></span><br>
+					作曲者：<span class="song-composer-value"></span><br>
+					<br>
+					<div class="song-content-value"></div>
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript">
+
+	var build = function(data) {
+		data.album.forEach(function(cv, i, array) {
+
+			var SongList = cv.album_info.reduce(function(pv, current) {
+				return (pv + "<li class='song' data-albumname='"+cv.album_name+"' data-songName='"+current.song_name+"'><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">"+current.song_name+"</a></li>");
+			}, "");
+
+			switch (cv.album_type) {
+				case "錄音室專輯":
+					var templete = ""
+					+ "<div class=\"col-md-12 record-CD\">"
+					+ "		<div class=\"panel panel-default\">"
+					+ "			<div class=\"panel-body\">"
+					+ "				<div class=\"col-md-4\">"
+					+ "					<img class=\"img-responsive\" src=\""+ cv.album_img +"\" width=\"150\">"
+					+ "				</div>"
+					+ "				<div class=\"col-md-8\">"
+					+ "					<h4>" + cv.album_name + "<small><span class=\"label label-info\">"+ cv.album_type + "</span><br>" + cv.album_date + "</small></h4>"
+					+ " 				<ol>"
+					+ 					SongList
+					+ "					</ol>"
+					+ "				</div>"
+					+ "			</div>"
+					+ "		</div>"
+					+ "</div>"
+					break;
+				case "演唱會CD":
+					var templete = ""
+					+ "<div class=\"col-md-12 live-CD\">"
+					+ "		<div class=\"panel panel-default\">"
+					+ "			<div class=\"panel-body\">"
+					+ "				<div class=\"col-md-4\">"
+					+ "					<img class=\"img-responsive\" src=\""+ cv.album_img +"\" width=\"150\">"
+					+ "				</div>"
+					+ "				<div class=\"col-md-8\">"
+					+ "					<h4>" + cv.album_name + "<small><span class=\"label label-success\">"+ cv.album_type + "</span><br>" + cv.album_date + "</small></h4>"
+					+ " 				<ol>"
+					+ 					SongList
+					+ "					</ol>"
+					+ "				</div>"
+					+ "			</div>"
+					+ "		</div>"
+					+ "</div>"
+					break;
+				case "精選輯":
+					var templete = ""
+					+ "<div class=\"col-md-12 special-CD\">"
+					+ "		<div class=\"panel panel-default\">"
+					+ "			<div class=\"panel-body\">"
+					+ "				<div class=\"col-md-4\">"
+					+ "					<img class=\"img-responsive\" src=\""+ cv.album_img +"\" width=\"150\">"
+					+ "				</div>"
+					+ "				<div class=\"col-md-8\">"
+					+ "					<h4>" + cv.album_name + "<small><span class=\"label label-danger\">"+ cv.album_type + "</span><br>" + cv.album_date + "</small></h4>"
+					+ " 				<ol>"
+					+ 					SongList
+					+ "					</ol>"
+					+ "				</div>"
+					+ "			</div>"
+					+ "		</div>"
+					+ "</div>"
+					break;
+			};
+
+			$("#albums-display").append(templete);
+
+		});
+
+		$('.song').click(function() {
+			var songName = $(this).data('songname')
+			var albumName = $(this).data('albumname')
+			var song = data.album.filter(function(cv) {
+				return cv.album_name == albumName;
+			})[0].album_info.filter(function(cv) {
+				return cv.song_name == songName;
+			})[0];
+
+			$(".modal-title").html(song.song_name);
+			$(".song-writer-value").html(song.song_info[0].writer);
+			$(".song-composer-value").html(song.song_info[0].composer);
+			$(".song-content-value").html(song.song_info[0].content);
+
+			var str = $(".song-content-value").html();
+			var regex = "<br />";
+			$(".song-content-value").html(str.replace(/\n/g,regex));
+		})
+	}
+
+	function show_record() {
+		$(".record-CD").fadeIn();
+		$(".live-CD").hide();
+		$(".special-CD").hide();
+	};
+
+	function show_live() {
+		$(".record-CD").hide();
+		$(".live-CD").fadeIn();
+		$(".special-CD").hide();
+	};
+
+	function show_special() {
+		$(".record-CD").hide();
+		$(".live-CD").hide();
+		$(".special-CD").fadeIn();
+	};
+
+	function show_all() {
+		$(".record-CD").fadeIn();
+		$(".live-CD").fadeIn();
+		$(".special-CD").fadeIn();
+	};
+
+	$.ajax({
+		url: 'js/album.json',
+		dataType: 'json'
+	}).done(build);
+
+
+	$(document).ready(function() {
+
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').focus();
+		});
+
+		$('#open_all').click(function(){
+			$('.panel-collapse').addClass('collapse in');
+		});
+
+		$('#close_all').click(function(){
+			$('.panel-collapse').removeClass('collapse in');
+			$('.panel-collapse').addClass('collapse');
+		});
+
+	});
+
+</script>
+
+</body>
+</html>
