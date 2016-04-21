@@ -5,6 +5,10 @@ body {
     height: 100%;
 }
 
+.footer{
+	padding: 30px 20px 15px 20px;
+}
+
 .class-body1{
 	margin-top: 50px;
 	display: table;
@@ -508,6 +512,12 @@ p {
 	border-bottom: 3px solid rgb(247,235,31);
 }
 
+.loading{
+	background-image: url('../img/ajax-loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
 /* Wrapper */
 .wrapper {
 	position: relative;
@@ -653,6 +663,10 @@ p {
 	}
 }
 
+#class #class-footer-text{
+	text-align: center;
+}
+
 #album{
 	width: 90%;
 	padding-top: 100px;
@@ -733,10 +747,4 @@ p {
 	#contact-form .col-sm-offset-3 {
 		margin-left: 0%;
 	}
-}
-
-.loading{
-	background-image: url('../img/ajax-loader.gif');
-	background-repeat: no-repeat;
-	background-position: center;
 }
