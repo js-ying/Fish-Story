@@ -60,9 +60,9 @@
 		<div class= "row">
 			<div class="col-lg-6">
     			<div class="input-group">
-      				<input type="text" class="form-control" id="key" placeholder="Search for..." value="阿信">
+      				<input type="text" class="form-control" id="key" placeholder="找歌詞">
       				<span class="input-group-btn">
-        				<button class="btn btn-default" type="button" onclick="search()">Go !</button>
+        				<button class="btn btn-default" id="go-search-btn" type="button" onclick="search()">搜尋</button>
       				</span>
     			</div>
   			</div>
@@ -87,8 +87,8 @@
 	            $.each(data.album, function(key,value) {
 					$.each(value.album_info, function(k,v){
 						$.each(v.song_info, function(i,j){
-
-							if ( j.writer == $('#key').val() ){
+							
+							if ( v.song_name == $('#key').val() || j.writer == $('#key').val() || j.composer == $('#key').val() ){
 		                        var templete = ""
 		                        +" <div class=\"panel panel-default\">"
 		                        +"     <div class=\"panel-heading\">"
@@ -120,6 +120,13 @@
 	    });
 
 	}
+
+	$(document).ready(function(){
+	    $('#key').keypress(function(e){
+	      if(e.keyCode==13)
+	      $('#go-search-btn').click();
+	    });
+	});
 
 
 </script>
