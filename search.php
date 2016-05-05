@@ -55,44 +55,71 @@
 		</ul>
 	</nav>
 
-    <div id="search-display"></div>
+	<div id="search">
+
+		<div class= "row">
+			<div class="col-lg-6">
+    			<div class="input-group">
+      				<input type="text" class="form-control" id="key" placeholder="Search for..." value="阿信">
+      				<span class="input-group-btn">
+        				<button class="btn btn-default" type="button" onclick="search()">Go !</button>
+      				</span>
+    			</div>
+  			</div>
+		</div>
+
+    	<div id="search-display"></div>
+	</div>
 
 <script>
 
-    $.ajax({
-        url: "js/album.json",
-        dataType: "json",
-        success: function(response) {
+	function search(){
 
-            var data = $.parseJSON(JSON.stringify(response));
+		$("#search-display").html("");
 
-            $.each(data.album, function(key,value) {
-				$.each(value.album_info, function(k,v){
-					$.each(value.song_info, function(i,j){
-						
+		$.ajax({
+	        url: "js/album.json",
+	        dataType: "json",
+	        success: function(response) {
+
+	            var data = $.parseJSON(JSON.stringify(response));
+
+	            $.each(data.album, function(key,value) {
+					$.each(value.album_info, function(k,v){
+						$.each(v.song_info, function(i,j){
+
+							if ( j.writer == $('#key').val() ){
+		                        var templete = ""
+		                        +" <div class=\"panel panel-default\">"
+		                        +"     <div class=\"panel-heading\">"
+		                        +"         <h3 class=\"panel-title\">" + v.song_name + "</h3>"
+		                        +"     </div>"
+		                        +"     <div class=\"panel-body\">"
+								+"     		作詞者：" + j.writer + "<br>"
+								+"          作曲者：" + j.composer + "<br><br>"
+		                        +			j.content
+		                        +"     </div>"
+		                        +" </div>"
+
+								$("#search-display").append(templete);
+							}
+
+						});
 					});
+	            });
 
-                        var templete = ""
-                        +" <div class=\"panel panel-default\">"
-                        +"     <div class=\"panel-heading\">"
-                        +"         <h3 class=\"panel-title\">" + v.song_name + "</h3>"
-                        +"     </div>"
-                        +"     <div class=\"panel-body\">"
-                        +"         歌詞"
-                        +"     </div>"
-                        +" </div>"
+				var str = $("#search-display").html();
+				var regex = "<br />";
+				$("#search-display").html(str.replace(/\n/g,regex));
 
-						$("#search-display").append(templete);
+	        },
 
-				});
-            });
+	        error: function() {
+	            alert("Fail!");
+	        }
+	    });
 
-        },
-
-        error: function() {
-            alert("Fail!");
-        }
-    });
+	}
 
 
 </script>

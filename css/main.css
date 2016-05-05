@@ -708,10 +708,19 @@ p {
 	 margin-left: -15px;
 }
 
-#search-display{
+#search{
     padding-top: 100px;
     margin: 0 auto;
     width: 50%;
+}
+
+#search .col-lg-6{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#search-display{
+	padding-top: 20px;
 }
 
 #contact{
