@@ -58,9 +58,9 @@
 	<div id="search">
 
 		<div class= "row">
-			<div class="col-lg-6">
+			<div class="col-lg-4">
     			<div class="input-group">
-      				<input type="text" class="form-control" id="key" placeholder="找歌詞">
+      				<input type="text" class="form-control" id="key" placeholder="找歌名、作詞、作曲者或歌詞......">
       				<span class="input-group-btn">
         				<button class="btn btn-default" id="go-search-btn" type="button" onclick="search()">搜尋</button>
       				</span>
@@ -68,7 +68,19 @@
   			</div>
 		</div>
 
-    	<div id="search-display"></div>
+    	<div id="search-display">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">歌名</h3>
+				</div>
+				<div class="panel-body">
+					<span class="label label-default">專輯分類</span>
+					作詞者：<br>
+					作曲者：<br><br>
+					歌詞
+				</div>
+			</div>
+		</div>
 	</div>
 
 <script>
@@ -124,8 +136,8 @@
 
 	$(document).ready(function(){
 	    $('#key').keypress(function(e){
-	      if(e.keyCode==13)
-	      $('#go-search-btn').click();
+			if(e.keyCode==13)
+			$('#go-search-btn').click();
 	    });
 	});
 

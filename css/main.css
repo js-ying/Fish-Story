@@ -712,6 +712,7 @@ p {
     padding-top: 100px;
     margin: 0 auto;
     width: 50%;
+    padding-bottom: 20px;
 }
 
 @media(max-width:767px) {
@@ -720,7 +721,7 @@ p {
 	}
 }
 
-#search .col-lg-6{
+#search .col-lg-4{
 	padding-left: 0px;
 	padding-right: 0px;
 }

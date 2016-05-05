@@ -178,27 +178,27 @@
 	}
 
 	function show_record() {
-		$(".record-CD").fadeIn();
+		$(".record-CD").hide().fadeIn();
 		$(".live-CD").hide();
 		$(".special-CD").hide();
 	};
 
 	function show_live() {
 		$(".record-CD").hide();
-		$(".live-CD").fadeIn();
+		$(".live-CD").hide().fadeIn();
 		$(".special-CD").hide();
 	};
 
 	function show_special() {
 		$(".record-CD").hide();
 		$(".live-CD").hide();
-		$(".special-CD").fadeIn();
+		$(".special-CD").hide().fadeIn();
 	};
 
 	function show_all() {
-		$(".record-CD").fadeIn();
-		$(".live-CD").fadeIn();
-		$(".special-CD").fadeIn();
+		$(".record-CD").hide().fadeIn();
+		$(".live-CD").hide().fadeIn();
+		$(".special-CD").hide().fadeIn();
 	};
 
 	$.ajax({
