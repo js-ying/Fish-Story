@@ -708,6 +708,12 @@ p {
 	 margin-left: -15px;
 }
 
+#search-display{
+    padding-top: 100px;
+    margin: 0 auto;
+    width: 50%;
+}
+
 #contact{
 	padding-top: 100px;
 	width: 50%;
