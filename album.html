@@ -81,6 +81,34 @@
 
 <script type="text/javascript">
 
+	function type(t) {
+		switch (t) {
+			case "錄音室專輯":
+				return "record-CD";
+				break;
+			case "演唱會CD":
+				return "live-CD";
+				break;
+			case "精選輯":
+				return "special-CD";
+				break;
+		}
+	};
+
+	function label_type(ly){
+		switch (ly){
+			case "錄音室專輯":
+				return "label-info";
+				break;
+			case "演唱會CD":
+				return "label-success";
+				break;
+			case "精選輯":
+				return "label-danger";
+				break;
+		}
+	};
+
 	var build = function(data) {
 		data.album.forEach(function(cv, i, array) {
 
@@ -88,62 +116,22 @@
 				return (pv + "<li class='song' data-albumname='"+cv.album_name+"' data-songName='"+current.song_name+"'><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">"+current.song_name+"</a></li>");
 			}, "");
 
-			switch (cv.album_type) {
-				case "錄音室專輯":
-					var templete = ""
-					+ "<div class=\"col-md-12 record-CD\">"
-					+ "		<div class=\"panel panel-default\">"
-					+ "			<div class=\"panel-body\">"
-					+ "				<div class=\"col-md-4\">"
-					+ "					<img class=\"img-responsive\" src=\""+ cv.album_img +"\" width=\"150\">"
-					+ "				</div>"
-					+ "				<div class=\"col-md-8\">"
-					+ "					<h4>" + cv.album_name + "<small><span class=\"label label-info\">"+ cv.album_type + "</span><br>" + cv.album_date + "</small></h4>"
-					+ " 				<ol>"
-					+ 					SongList
-					+ "					</ol>"
-					+ "				</div>"
-					+ "			</div>"
-					+ "		</div>"
-					+ "</div>"
-					break;
-				case "演唱會CD":
-					var templete = ""
-					+ "<div class=\"col-md-12 live-CD\">"
-					+ "		<div class=\"panel panel-default\">"
-					+ "			<div class=\"panel-body\">"
-					+ "				<div class=\"col-md-4\">"
-					+ "					<img class=\"img-responsive\" src=\""+ cv.album_img +"\" width=\"150\">"
-					+ "				</div>"
-					+ "				<div class=\"col-md-8\">"
-					+ "					<h4>" + cv.album_name + "<small><span class=\"label label-success\">"+ cv.album_type + "</span><br>" + cv.album_date + "</small></h4>"
-					+ " 				<ol>"
-					+ 					SongList
-					+ "					</ol>"
-					+ "				</div>"
-					+ "			</div>"
-					+ "		</div>"
-					+ "</div>"
-					break;
-				case "精選輯":
-					var templete = ""
-					+ "<div class=\"col-md-12 special-CD\">"
-					+ "		<div class=\"panel panel-default\">"
-					+ "			<div class=\"panel-body\">"
-					+ "				<div class=\"col-md-4\">"
-					+ "					<img class=\"img-responsive\" src=\""+ cv.album_img +"\" width=\"150\">"
-					+ "				</div>"
-					+ "				<div class=\"col-md-8\">"
-					+ "					<h4>" + cv.album_name + "<small><span class=\"label label-danger\">"+ cv.album_type + "</span><br>" + cv.album_date + "</small></h4>"
-					+ " 				<ol>"
-					+ 					SongList
-					+ "					</ol>"
-					+ "				</div>"
-					+ "			</div>"
-					+ "		</div>"
-					+ "</div>"
-					break;
-			};
+			var templete = ''
+			+ '<div class="col-md-12 ' + type(cv.album_type) +'">'
+			+ '		<div class="panel panel-default">'
+			+ '			<div class="panel-body">'
+			+ '				<div class="col-md-4">'
+			+ '					<img class="img-responsive" src="' + cv.album_img + '" width=150>'
+			+ '				</div>'
+			+ '				<div class="col-md-8">'
+			+ '					<h4>' + cv.album_name + '<small><span class="label '+ label_type(cv.album_type) +'">'+ cv.album_type + '</span><br>' + cv.album_date + '</small></h4>'
+			+ ' 				<ol>'
+			+ 					SongList
+			+ '					</ol>'
+			+ '				</div>'
+			+ '			</div>'
+			+ '		</div>'
+			+ '</div>'
 
 			$("#albums-display").append(templete);
 
@@ -169,6 +157,12 @@
 		})
 	}
 
+	function show_all() {
+		$(".record-CD").hide().fadeIn();
+		$(".live-CD").hide().fadeIn();
+		$(".special-CD").hide().fadeIn();
+	};
+
 	function show_record() {
 		$(".record-CD").hide().fadeIn();
 		$(".live-CD").hide();
@@ -184,12 +178,6 @@
 	function show_special() {
 		$(".record-CD").hide();
 		$(".live-CD").hide();
-		$(".special-CD").hide().fadeIn();
-	};
-
-	function show_all() {
-		$(".record-CD").hide().fadeIn();
-		$(".live-CD").hide().fadeIn();
 		$(".special-CD").hide().fadeIn();
 	};
 
