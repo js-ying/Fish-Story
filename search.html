@@ -107,7 +107,9 @@
 					$.each(value.album_info, function(k,v){
 						$.each(v.song_info, function(i,j){
 
-							if ( v.song_name == $('#key').val() || j.writer == $('#key').val() || j.composer == $('#key').val() ){
+							var query_regex = new RegExp(".*"+ $('#key').val() +".*", "g");
+
+							if ( v.song_name.match(query_regex) || j.writer.match(query_regex) || j.composer.match(query_regex) || j.content.match(query_regex) ){
 		                        var templete = ""
 		                        +" <div class=\"panel panel-default\">"
 		                        +"     <div class=\"panel-heading\">"
