@@ -19,32 +19,24 @@
 <body>
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<!-- Brand and toggle get grouped for better mobile display -->
 	  	<div class="navbar-header">
-	    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 	      		<span class="sr-only">Toggle navigation</span>
 	      		<span class="icon-bar"></span>
 	    		<span class="icon-bar"></span>
 	      		<span class="icon-bar"></span>
 	    	</button>
-	    	<a class="navbar-brand" href="./index.html">梁靜茹 FishLeong</a>
+	    	<a class="navbar-brand" href="./">梁靜茹 FishLeong</a>
 	  	</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
 	 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-			      	<li><a href="singer.html">歌手介紹</a></li>
-			      	<li><a href="photo.html">照片欣賞</a></li>
-					<li><a href="class.html">經典歌曲</a></li>
-			      	<li><a href="album.html">歷代專輯</a></li>
+		      	<li><a href="singer.html">歌手介紹</a></li>
+		      	<li><a href="photo.html">照片欣賞</a></li>
+				<li><a href="class.html">經典歌曲</a></li>
+		      	<li><a href="album.html">歷代專輯</a></li>
+				<li><a href="search.html">快速找歌 Go!</a></li>
 	    	</ul>
-
-		<form class="navbar-form navbar-left" role="search">
-	      		<div class="form-group">
-	        			<input type="text" class="form-control" placeholder="找歌詞">
-	      		</div>
-	      	<button type="submit" class="btn btn-default">搜尋</button>
-	    	</form>
 
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
@@ -58,6 +50,7 @@
 	</nav>
 
 	<div id="contact">
+
 		<h3>與我聯絡<small><br>Guand.me</small></h3>
 		<form class="form-horizontal" id="contact-form" role="form" method="post" enctype="multipart/form-data" action="contact.proc.php">
 		  	<div class="form-group">
@@ -97,6 +90,7 @@
 		    	</div>
 		  	</div>
 		</form>
+
 	</div>
 
 <script>
