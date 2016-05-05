@@ -78,6 +78,20 @@
 
 <script>
 
+	function label_type(ly){
+		switch (ly){
+			case "錄音室專輯":
+				return "label-info";
+				break;
+			case "演唱會CD":
+				return "label-success";
+				break;
+			case "精選輯":
+				return "label-danger";
+				break;
+		}
+	};
+
 	function search(){
 
 		$("#search-display").html("");
@@ -100,7 +114,7 @@
 		                        +"         <h3 class=\"panel-title\">" + v.song_name + "</h3>"
 		                        +"     </div>"
 		                        +"     <div class=\"panel-body\">"
-								+"			<span class=\"label label-default\">"+ value.album_type + "</span>"
+								+"			<span class=\"label " + label_type(value.album_type) + "\">"+ value.album_type + "</span>"
 								+"     		作詞者：" + j.writer + "<br>"
 								+"          作曲者：" + j.composer + "<br><br>"
 		                        +			j.content
