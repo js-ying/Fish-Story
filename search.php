@@ -87,7 +87,7 @@
 	            $.each(data.album, function(key,value) {
 					$.each(value.album_info, function(k,v){
 						$.each(v.song_info, function(i,j){
-							
+
 							if ( v.song_name == $('#key').val() || j.writer == $('#key').val() || j.composer == $('#key').val() ){
 		                        var templete = ""
 		                        +" <div class=\"panel panel-default\">"
@@ -95,6 +95,7 @@
 		                        +"         <h3 class=\"panel-title\">" + v.song_name + "</h3>"
 		                        +"     </div>"
 		                        +"     <div class=\"panel-body\">"
+								+"			<span class=\"label label-default\">"+ value.album_type + "</span>"
 								+"     		作詞者：" + j.writer + "<br>"
 								+"          作曲者：" + j.composer + "<br><br>"
 		                        +			j.content

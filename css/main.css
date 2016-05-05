@@ -714,6 +714,12 @@ p {
     width: 50%;
 }
 
+@media(max-width:767px) {
+	#search{
+		width: 90%;
+	}
+}
+
 #search .col-lg-6{
 	padding-left: 0px;
 	padding-right: 0px;
@@ -721,6 +727,13 @@ p {
 
 #search-display{
 	padding-top: 20px;
+}
+
+#search .label{
+	position: relative;
+	float: right;
+	font-size: 12px;
+	padding: 5px 10px 7px 10px;
 }
 
 #contact{
