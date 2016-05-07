@@ -359,6 +359,12 @@ p {
     padding-top: 170px;
 }
 
+@media(max-width:767px) {
+	.content-section {
+	    padding-top: 100px;
+	}
+}
+
 #gotop {
     display: none;
     position: fixed;
