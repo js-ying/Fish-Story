@@ -716,9 +716,18 @@ p {
     padding-bottom: 20px;
 }
 
+#search .col-lg-2{
+	padding-left: 0px;
+}
+
 @media(max-width:767px) {
 	#search{
 		width: 90%;
+		padding-top: 70px;
+	}
+	#search .col-lg-2{
+		padding-right: 0px;
+		padding-bottom: 10px;
 	}
 }
 

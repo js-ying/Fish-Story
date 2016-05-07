@@ -50,9 +50,28 @@
 	<div id="search">
 
 		<div class= "row">
+			<div class="col-lg-2">
+				<select class="form-control" id="searchWhat">
+					<option value="找歌名">找歌名</option>
+					<option value="找作詞者">找作詞者</option>
+					<option value="找作曲者">找作曲者</option>
+					<option value="找歌詞">找歌詞</option>
+					<option value="快速查詢">全部查詢</option>
+				</select>
+			</div>
+
+			<div class="col-lg-2">
+				<select class="form-control" id="whatType">
+					<option value="錄音室專輯">錄音室專輯</option>
+					<option value="演唱會CD">演唱會CD</option>
+					<option value="精選輯">精選輯</option>
+					<option value="全部顯示">全部顯示</option>
+				</select>
+			</div>
+
 			<div class="col-lg-4">
     			<div class="input-group">
-      				<input type="text" class="form-control" id="key" placeholder="找歌名、作詞、作曲者或歌詞......">
+      				<input type="text" class="form-control" id="key" placeholder="你想要找什麼呢？">
       				<span class="input-group-btn">
         				<button class="btn btn-default" id="go-search-btn" type="button" onclick="search()">搜尋</button>
       				</span>
@@ -107,9 +126,45 @@
 					$.each(value.album_info, function(k,v){
 						$.each(v.song_info, function(i,j){
 
+							var what = $("#searchWhat").val();							
 							var query_regex = new RegExp(".*"+ $('#key').val() +".*", "g");
 
-							if ( v.song_name.match(query_regex) || j.writer.match(query_regex) || j.composer.match(query_regex) || j.content.match(query_regex) ){
+							switch (what) {
+								case "找歌名":
+									var control = v.song_name.match(query_regex) && what_type();
+									break;
+								case "找作詞者":
+									var control = j.writer.match(query_regex) && what_type();
+									break;
+								case "找作曲者":
+									var control = j.composer.match(query_regex) && what_type();
+									break;
+								case "找歌詞":
+									var control = j.content.match(query_regex) && what_type();
+									break;
+								case "快速查詢":
+									var control = what_type() && (v.song_name.match(query_regex) || j.writer.match(query_regex) || j.composer.match(query_regex) || j.content.match(query_regex));
+									break;
+							}
+
+							function what_type(){
+								switch (whatType.value) {
+									case "錄音室專輯":
+										return(value.album_type == "錄音室專輯");
+										break;
+									case "演唱會CD":
+										return(value.album_type == "演唱會CD");
+										break;
+									case "精選輯":
+										return(value.album_type == "精選輯");
+										break;
+									case "全部顯示":
+										return(value.album_type == "錄音室專輯" || value.album_type == "演唱會CD" || value.album_type == "精選輯");
+										break;
+								}
+							}
+
+							if (control) {
 		                        var templete = ""
 		                        +" <div class=\"panel panel-default\">"
 		                        +"     <div class=\"panel-heading\">"
