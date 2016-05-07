@@ -49,10 +49,12 @@
 
 	<div id="album">
 
-		<button type="button" class="btn btn-primary" onClick="show_all()">全部顯示</button>
-		<button type="button" class="btn btn-default" onClick="show_record()">錄音室專輯</button>
-		<button type="button" class="btn btn-default" onClick="show_live()">演唱會CD</button>
-		<button type="button" class="btn btn-default" onClick="show_special()">精選輯</button>
+		<select class="form-control" id="show" onChange="changed(show)">
+			<option value="全部顯示">全部顯示</option>
+			<option value="錄音室專輯">錄音室專輯</option>
+			<option value="演唱會CD">演唱會CD</option>
+			<option value="精選輯">精選輯</option>
+		</select>
 
 		<div class="row" id="albums-display">
 		</div>
@@ -157,6 +159,23 @@
 		})
 	}
 
+	function changed(show){
+		switch (show.value) {
+			case "錄音室專輯":
+				show_record();
+				break;
+			case "演唱會CD":
+				show_live();
+				break;
+			case "精選輯":
+				show_special();
+				break;
+			case "全部顯示":
+				show_all();
+				break;
+		}
+	}
+
 	function show_all() {
 		$(".record-CD").hide().fadeIn();
 		$(".live-CD").hide().fadeIn();
@@ -187,19 +206,11 @@
 	}).done(build);
 
 
+
 	$(document).ready(function() {
 
 		$('#myModal').on('shown.bs.modal', function () {
 			$('#myInput').focus();
-		});
-
-		$('#open_all').click(function(){
-			$('.panel-collapse').addClass('collapse in');
-		});
-
-		$('#close_all').click(function(){
-			$('.panel-collapse').removeClass('collapse in');
-			$('.panel-collapse').addClass('collapse');
 		});
 
 	});
