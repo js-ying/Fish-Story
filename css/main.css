@@ -580,10 +580,8 @@ p {
 	border-bottom: 3px solid rgb(247,235,31);
 }
 
-.loading{
-	background-image: url('../img/ajax-loader.gif');
-	background-repeat: no-repeat;
-	background-position: center;
+#class img{
+    cursor: pointer;
 }
 
 /* Wrapper */
