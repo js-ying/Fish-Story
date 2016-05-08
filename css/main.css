@@ -461,21 +461,72 @@ p {
 
 #photo_show{
 	padding: 100px 50px 50px 70px;
-    text-align: center;
+    width: 1680px;
+    margin: 0 auto;
+}
+
+#photo_show #show_rwd{
+    width: 100%;
+}
+
+@media(max-width:1680px) {
+	#photo_show{
+		width: 1490px;
+	}
+}
+
+@media(max-width:1490px) {
+	#photo_show{
+		width: 1300px;
+	}
+}
+
+@media(max-width:1340px) {
+	#photo_show{
+		width: 1110px;
+	}
+}
+
+@media(max-width:1110px) {
+	#photo_show{
+		width: 920px;
+	}
+}
+
+@media(max-width:920px) {
+	#photo_show{
+		width: 730px;
+	}
+}
+
+@media(max-width:730px) {
+	#photo_show{
+		width: 540px;
+	}
+}
+
+@media(max-width:540px) {
+	#photo_show{
+		width: 95%;
+	}
+    #photo_show #show_rwd{
+        text-align: center;
+    }
 }
 
 #photo_show img{
 	width: 150px;
 	padding: 6px !important;
-	margin: 10px;
+	margin: 20px;
 }
 
-@media(max-width:435px) {
+@media(max-width:540px) {
 	#photo_show{
 		padding: 70px 0px 20px 0px;
 	}
 
 	#photo_show img{
+        margin: 10px;
 		width: 130px;
 	}
 }
