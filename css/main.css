@@ -814,6 +814,33 @@ p {
 	padding: 5px 10px 7px 10px;
 }
 
+#about{
+    padding-top: 20px;
+	width: 45%;
+	margin: 0 auto;
+    text-align: center;
+}
+
+#about h3{
+    margin-top: 80px;
+}
+
+#about span{
+    border-left: 3px solid #888888;
+    border-right: 3px solid #888888;
+    padding: 0px 10px 0px 10px;
+}
+
+@media(max-width:767px) {
+	#about{
+        width: 80%;
+    }
+}
+
+#about p{
+    font-size: 16px;
+}
+
 #contact{
 	padding-top: 100px;
 	width: 50%;
