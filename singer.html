@@ -18,7 +18,7 @@
 	<script src="js/jquery.easing.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
-<body class="class-body1">
+<body class="singer-body1">
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	  	<div class="navbar-header">
@@ -364,10 +364,10 @@
 		$(window).scroll(function() {
 			if ( $(this).scrollTop() > 300){
 				$('#gotop').fadeIn("fast");
-				$('.class-body1').addClass('class-body2').removeClass('class-body1');
+				$('.singer-body1').addClass('singer-body2').removeClass('singer-body1');
 			} else {
 				$('#gotop').stop().fadeOut("fast");
-				$('.class-body2').addClass('class-body1').removeClass('class-body2');
+				$('.singer-body2').addClass('singer-body1').removeClass('singer-body2');
 			}
 		});
 	 });
