@@ -370,6 +370,14 @@ p {
 	border-radius: 20px;
 }
 
+#singer #about-singer img{
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+}
+
 #singer #company .row .thumbnail{
 	font-size: 16px;
 	text-align: left;
