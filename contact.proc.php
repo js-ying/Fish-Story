@@ -32,7 +32,7 @@ if (!empty($arr_errorCode)) {
 	echo $msgDisplayNoJs;
 ?>
 	<script>
-		alert("請勿使用特殊字元或欄位未填：\n<?php echo $msgDisplay; ?>");
+		alert("請勿使用特殊字元或欄位未填：\n <?php echo $msgDisplay; ?> ");
 		history.go(-1);
 	</script>
 <?php
@@ -66,7 +66,7 @@ else {
 	$mail->FromName = $_POST['nickname']; //此顯示寄件者名稱
 	$mail->Subject = "梁靜茹FishLeong 意見反應系統"; //信件主旨
 	$mail->Body = "【來信人】".$_POST['nickname']."<br>【Email】".$_POST['email']."<br>【反應類型】".$_POST['type']."<br>【內容】".$_POST['content'];   //信件內容
-	$mail->IsHTML(false);
+	$mail->IsHTML(true);
 
 	// 收件人
 	$mail->AddAddress("jhihsiying@gmail.com"); //此為收件者的電子信箱及顯示名稱
@@ -79,7 +79,7 @@ else {
 			alert('寄信成功！');
 			window.location.href = "contact.php";
 		</script>
-		<?
+		<?php
 	}
 
 }
