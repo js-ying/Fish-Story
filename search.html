@@ -115,88 +115,86 @@
 
 		$("#search-display").html("");
 
-		$.ajax({
-	        url: "js/album.json",
-	        dataType: "json",
-	        success: function(response) {
+        $.each(data.album, function(key,value) {
+			$.each(value.album_info, function(k,v){
+				$.each(v.song_info, function(i,j){
 
-	            var data = $.parseJSON(JSON.stringify(response));
+					var what = $("#searchWhat").val();
+					var query_regex = new RegExp(".*"+ $('#key').val() +".*", "g");
 
-	            $.each(data.album, function(key,value) {
-					$.each(value.album_info, function(k,v){
-						$.each(v.song_info, function(i,j){
+					switch (what) {
+						case "找歌名":
+							var control = v.song_name.match(query_regex) && what_type();
+							break;
+						case "找作詞者":
+							var control = j.writer.match(query_regex) && what_type();
+							break;
+						case "找作曲者":
+							var control = j.composer.match(query_regex) && what_type();
+							break;
+						case "找歌詞":
+							var control = j.content.match(query_regex) && what_type();
+							break;
+						case "快速查詢":
+							var control = what_type() && (v.song_name.match(query_regex) || j.writer.match(query_regex) || j.composer.match(query_regex) || j.content.match(query_regex));
+							break;
+					}
 
-							var what = $("#searchWhat").val();
-							var query_regex = new RegExp(".*"+ $('#key').val() +".*", "g");
+					function what_type(){
+						switch (whatType.value) {
+							case "錄音室專輯":
+								return(value.album_type == "錄音室專輯");
+								break;
+							case "演唱會CD":
+								return(value.album_type == "演唱會CD");
+								break;
+							case "精選輯":
+								return(value.album_type == "精選輯");
+								break;
+							case "全部顯示":
+								return(value.album_type == "錄音室專輯" || value.album_type == "演唱會CD" || value.album_type == "精選輯");
+								break;
+						}
+					}
 
-							switch (what) {
-								case "找歌名":
-									var control = v.song_name.match(query_regex) && what_type();
-									break;
-								case "找作詞者":
-									var control = j.writer.match(query_regex) && what_type();
-									break;
-								case "找作曲者":
-									var control = j.composer.match(query_regex) && what_type();
-									break;
-								case "找歌詞":
-									var control = j.content.match(query_regex) && what_type();
-									break;
-								case "快速查詢":
-									var control = what_type() && (v.song_name.match(query_regex) || j.writer.match(query_regex) || j.composer.match(query_regex) || j.content.match(query_regex));
-									break;
-							}
+					if (control) {
+                        var templete = ""
+                        +" <div class=\"panel panel-default\">"
+                        +"     <div class=\"panel-heading\">"
+                        +"         <h3 class=\"panel-title\">" + v.song_name + "</h3>"
+                        +"     </div>"
+                        +"     <div class=\"panel-body\">"
+						+"			<span class=\"label " + label_type(value.album_type) + "\">"+ value.album_type + "</span>"
+						+"     		作詞者：" + j.writer + "<br>"
+						+"          作曲者：" + j.composer + "<br><br>"
+                        +			j.content
+                        +"     </div>"
+                        +" </div>"
 
-							function what_type(){
-								switch (whatType.value) {
-									case "錄音室專輯":
-										return(value.album_type == "錄音室專輯");
-										break;
-									case "演唱會CD":
-										return(value.album_type == "演唱會CD");
-										break;
-									case "精選輯":
-										return(value.album_type == "精選輯");
-										break;
-									case "全部顯示":
-										return(value.album_type == "錄音室專輯" || value.album_type == "演唱會CD" || value.album_type == "精選輯");
-										break;
-								}
-							}
+						$("#search-display").append(templete);
+					}
 
-							if (control) {
-		                        var templete = ""
-		                        +" <div class=\"panel panel-default\">"
-		                        +"     <div class=\"panel-heading\">"
-		                        +"         <h3 class=\"panel-title\">" + v.song_name + "</h3>"
-		                        +"     </div>"
-		                        +"     <div class=\"panel-body\">"
-								+"			<span class=\"label " + label_type(value.album_type) + "\">"+ value.album_type + "</span>"
-								+"     		作詞者：" + j.writer + "<br>"
-								+"          作曲者：" + j.composer + "<br><br>"
-		                        +			j.content
-		                        +"     </div>"
-		                        +" </div>"
+				});
+			});
+        });
 
-								$("#search-display").append(templete);
-							}
+		var str = $("#search-display").html();
+		var regex = "<br />";
+		$("#search-display").html(str.replace(/\n/g,regex));
 
-						});
-					});
-	            });
+    }
 
-				var str = $("#search-display").html();
-				var regex = "<br />";
-				$("#search-display").html(str.replace(/\n/g,regex));
-
-	        },
-
-	        error: function() {
-	            alert("Fail!");
-	        }
-	    });
-
-	}
+    $.ajax({
+        async: false,
+        url: "js/album.json",
+        dataType: "json",
+        error: function(json_fail){
+            alert("Json載入失敗！");
+        },
+        success: function(json_data){
+            data = $.parseJSON(JSON.stringify(json_data));
+        }
+    });
 
 	$(document).ready(function(){
 	    $('#key').keypress(function(e){
