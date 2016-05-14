@@ -51,7 +51,7 @@
 
 		<div class= "row">
 			<div class="col-lg-2">
-				<select class="form-control" id="searchWhat">
+				<select class="form-control" id="searchWhat" onChange="search()">
 					<option value="找歌名">找歌名</option>
 					<option value="找作詞者">找作詞者</option>
 					<option value="找作曲者">找作曲者</option>
@@ -61,7 +61,7 @@
 			</div>
 
 			<div class="col-lg-2">
-				<select class="form-control" id="whatType">
+				<select class="form-control" id="whatType" onChange="search()">
 					<option value="錄音室專輯">錄音室專輯</option>
 					<option value="演唱會CD">演唱會CD</option>
 					<option value="精選輯">精選輯</option>
@@ -178,11 +178,18 @@
 			});
         });
 
+		if ( $("#search-display").is(":empty") ){
+			var fail_templete = '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 找不到相關歌曲，請檢查您的搜尋條件有沒有錯誤。</div>'
+			$("#search-display").append(fail_templete);
+		}
+
 		var str = $("#search-display").html();
 		var regex = "<br />";
 		$("#search-display").html(str.replace(/\n/g,regex));
 
     }
+
+	var search_fail = 0;
 
     $.ajax({
         async: false,
