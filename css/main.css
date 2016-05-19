@@ -102,8 +102,12 @@ p {
 
 @media(max-width: 767px){
 
+    .main_bg .navbar-collapse{
+        background-color: rgba(165,104,104,0.2);
+    }
+
     .navbar-collapse{
-        background-color: rgba(165,104,104,0.3);
+        background-color: #E5D1D1;
     }
 
     .navbar-nav>li>a,
@@ -844,6 +848,10 @@ p {
 
 #search-display{
 	padding-top: 20px;
+}
+
+#search .panel-default>.panel-heading{
+    background-color: #e8ddda;
 }
 
 #search .label{
