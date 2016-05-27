@@ -825,6 +825,19 @@ p {
 	 margin-left: -15px;
 }
 
+#song{
+	width: 50%;
+	padding-top: 100px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+}
+
+@media(max-width:767px) {
+	#song{
+		width:95%;
+	}
+}
+
 #search{
     padding-top: 100px;
     margin: 0 auto;
