@@ -59,8 +59,7 @@
 				<article class="feature left">
 					<img src="img/class/img1.jpg" class="img-responsive" id="img1" onClick="play_video(1)">
 					<span class="video" id="span1">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video1" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe1">
 						</div>
 					</span>
 					<div class="content">
@@ -75,8 +74,7 @@
 				<article class="feature right">
 					<img src="img/class/img2.jpg" class="img-responsive" id="img2" onClick="play_video(2)">
 					<span class="video" id="span2">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video2" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe2">
 						</div>
 					</span>
 					<div class="content">
@@ -91,8 +89,7 @@
 				<article class="feature left">
 					<img src="img/class/img3.jpg" class="img-responsive" id="img3" onClick="play_video(3)">
 					<span class="video" id="span3">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video3" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe3">
 						</div>
 					</span>
 					<div class="content">
@@ -107,8 +104,7 @@
 				<article class="feature right">
 					<img src="img/class/img4.jpg" class="img-responsive" id="img4" onClick="play_video(4)">
 					<span class="video" id="span4">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video4" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe4">
 						</div>
 					</span>
 					<div class="content">
@@ -123,8 +119,7 @@
 				<article class="feature left">
 					<img src="img/class/img5.jpg" class="img-responsive" id="img5" onClick="play_video(5)">
 					<span class="video" id="span5">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video5" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe5">
 						</div>
 					</span>
 					<div class="content">
@@ -139,8 +134,7 @@
 				<article class="feature right">
 					<img src="img/class/img6.jpg" class="img-responsive" id="img6" onClick="play_video(6)">
 					<span class="video" id="span6">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video6" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe6">
 						</div>
 					</span>
 					<div class="content">
@@ -155,8 +149,7 @@
 				<article class="feature left">
 					<img src="img/class/img7.jpg" class="img-responsive" id="img7" onClick="play_video(7)">
 					<span class="video" id="span7">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video7" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe7">
 						</div>
 					</span>
 					<div class="content">
@@ -171,8 +164,7 @@
 				<article class="feature right">
 					<img src="img/class/img8.jpg" class="img-responsive" id="img8" onClick="play_video(8)">
 					<span class="video" id="span8">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video8" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe8">
 						</div>
 					</span>
 					<div class="content">
@@ -187,8 +179,7 @@
 				<article class="feature left">
 					<img src="img/class/img9.jpg" class="img-responsive" id="img9" onClick="play_video(9)">
 					<span class="video" id="span9">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video9" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe9">
 						</div>
 					</span>
 					<div class="content">
@@ -203,8 +194,7 @@
 				<article class="feature right">
 					<img src="img/class/img10.jpg" class="img-responsive" id="img10" onClick="play_video(10)">
 					<span class="video" id="span10">
-						<div class="embed-responsive embed-responsive-16by9">
-							<iframe class="embed-responsive-item" id="video10" src="" frameborder="0" allowfullscreen></iframe>
+						<div class="embed-responsive embed-responsive-16by9" id="iframe10">
 						</div>
 					</span>
 					<div class="content">
@@ -237,52 +227,62 @@
 			case 1:
 				$('#img1').hide();
 				$('#span1').show();
-				$('#video1').attr("src","https://www.youtube.com/embed/KKRqKsjqySI?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/KKRqKsjqySI?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe1').append(show_video);
 			break;
 			case 2:
 				$('#img2').hide();
 				$('#span2').show();
-				$('#video2').attr("src","https://www.youtube.com/embed/OsdMP5RiPPs?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/OsdMP5RiPPs?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe2').append(show_video);
 			break;
 			case 3:
 				$('#img3').hide();
 				$('#span3').show();
-				$('#video3').attr("src","https://www.youtube.com/embed/gVr_cM_d55I?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/gVr_cM_d55I?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe3').append(show_video);
 			break;
 			case 4:
 				$('#img4').hide();
 				$('#span4').show();
-				$('#video4').attr("src","https://www.youtube.com/embed/nDchQNPuA0k?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/nDchQNPuA0k?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe4').append(show_video);
 			break;
 			case 5:
 				$('#img5').hide();
 				$('#span5').show();
-				$('#video5').attr("src","https://www.youtube.com/embed/k_l7FVsqUyM?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/k_l7FVsqUyM?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe5').append(show_video);
 			break;
 			case 6:
 				$('#img6').hide();
 				$('#span6').show();
-				$('#video6').attr("src","https://www.youtube.com/embed/KAn2ejVJlE0?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/KAn2ejVJlE0?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe6').append(show_video);
 			break;
 			case 7:
 				$('#img7').hide();
 				$('#span7').show();
-				$('#video7').attr("src","https://www.youtube.com/embed/gE6uuacCjhA?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/gE6uuacCjhA?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe7').append(show_video);
 			break;
 			case 8:
 				$('#img8').hide();
 				$('#span8').show();
-				$('#video8').attr("src","https://www.youtube.com/embed/RkQy3NlG1eo?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/RkQy3NlG1eo?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe8').append(show_video);
 			break;
 			case 9:
 				$('#img9').hide();
 				$('#span9').show();
-				$('#video9').attr("src","https://www.youtube.com/embed/gR6GRMrvl5M?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/gR6GRMrvl5M?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe9').append(show_video);
 			break;
 			case 10:
 				$('#img10').hide();
 				$('#span10').show();
-				$('#video10').attr("src","https://www.youtube.com/embed/gR6GRMrvl5M?autoplay=1");
+				var show_video = '<iframe class="embed-responsive-item" id="video1" src="https://www.youtube.com/embed/gR6GRMrvl5M?autoplay=1" frameborder="0" allowfullscreen></iframe>'
+				$('#iframe10').append(show_video);
 			break;
 		}
 	};
