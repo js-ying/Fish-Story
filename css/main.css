@@ -249,37 +249,34 @@ p {
 }
 
 .singer-body1{
-	margin-top: 50px;
-	display: table;
-	width: 100%;
-	height: auto;
-	padding: 50px 0;
-	background: url("../img/singer_bg1.jpg") no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	-webkit-transition: background 200ms ease-in 100ms; /* property duration timing-function delay */
-    -moz-transition: background 200ms ease-in 100ms;
-    -o-transition: background 200ms ease-in 100ms;
+    background-image: url('../img/singer_bg1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 40px;
     transition: background 200ms ease-in 100ms;
 }
 
 .singer-body2{
-	margin-top: 50px;
-	display: table;
-	width: 100%;
-	height: auto;
-	padding: 50px 0;
-	background: url("../img/singer_bg2.jpg") no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	-webkit-transition: background 200ms ease-in 100ms; /* property duration timing-function delay */
-    -moz-transition: background 200ms ease-in 100ms;
-    -o-transition: background 200ms ease-in 100ms;
+    background-image: url('../img/singer_bg2.jpg');
+    background-repeat: no-repeat;
+    background-position: center center ;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 50px;
+    padding-bottom: 40px;
     transition: background 200ms ease-in 100ms;
+}
+
+@media (max-width:768px) {
+    .singer-body1 {
+        background-attachment: scroll;
+    }
+    .singer-body2 {
+        background-attachment: scroll;
+    }
 }
 
 .intro {
@@ -486,6 +483,12 @@ p {
 	border-radius: 20px;
 }
 
+@media(max-width:767px){
+    #singer #about-singer{
+        margin-top: 200px;
+    }
+}
+
 #singer #about-singer img{
     display: block;
     margin: 0 auto;
@@ -553,7 +556,7 @@ p {
 }
 
 #photo_show{
-	padding: 100px 50px 50px 70px;
+	padding: 100px 50px 20px 70px;
     width: 1680px;
     margin: 0 auto;
 }
@@ -957,6 +960,7 @@ p {
 
 #contact{
 	padding-top: 100px;
+    padding-bottom: 20px;
 	width: 50%;
 	margin: 0 auto;
 }
