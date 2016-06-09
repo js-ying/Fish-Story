@@ -171,7 +171,7 @@
                         +"     </div>"
                         +" </div>"
 
-						$("#search-display").append(templete);
+						$("#search-display").append(templete).hide().fadeIn(500);
 					}
 
 				});
@@ -180,7 +180,7 @@
 
 		if ( $("#search-display").is(":empty") ){
 			var fail_templete = '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 找不到相關歌曲，請檢查您的搜尋條件有沒有錯誤。</div>'
-			$("#search-display").append(fail_templete);
+			$("#search-display").append(fail_templete).hide().fadeIn(500);
 		}
 
 		var str = $("#search-display").html();
