@@ -14,6 +14,7 @@
     <script src="js/jquery.js"></script>
 	<script src="js/jquery.ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
+	<script src="js/navbar_effect.js"></script>
 	<script src="js/jquery.validate.js"></script>
 	<scritt src="js/jquery.validate.messages.js"></scritt>
 </head>
