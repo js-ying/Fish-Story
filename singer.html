@@ -58,8 +58,8 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h1 class="brand-heading">歌手介紹</h1>
                         <p class="intro-text">讓你更加瞭解靜茹</p>
-                        <a href="#about-singer" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
+                        <a href="#about-singer" class="btn btn-circle page-scroll" >
+                            <i class="fa fa-angle-double-down animated" id="go-next"></i>
                         </a>
                     </div>
                 </div>
@@ -362,8 +362,14 @@
 
 <script>
 	$(document).ready(function() {
+
+		//show effect
+		$(".intro h1, .intro p, #go-next, #singer").fadeIn(1000);
+
+		//btn placement
 	  	$(".btn").popover({placement:'bottom'});
 
+		//change background image
 		$(window).scroll(function() {
 			if ( $(this).scrollTop() > 300){
 				$('#gotop').fadeIn("fast");
@@ -373,26 +379,29 @@
 				$('.singer-body2').addClass('singer-body1').removeClass('singer-body2');
 			}
 		});
+
+		//Gotop
+		$(function() {
+
+			$('a.page-scroll').bind('click', function(event) {
+				var $anchor = $(this);
+				$('html, body').stop().animate({
+					scrollTop: $($anchor.attr('href')).offset().top
+				}, 1500, 'easeInOutExpo');
+				event.preventDefault();
+			});
+
+			$("#gotop").click(function(){
+				jQuery("html,body").animate({
+					scrollTop:0
+				},1500);
+			});
+
+		});
+
 	 });
 
-	 $(function() {
-
-	     $('a.page-scroll').bind('click', function(event) {
-	         var $anchor = $(this);
-	         $('html, body').stop().animate({
-	             scrollTop: $($anchor.attr('href')).offset().top
-	         }, 1500, 'easeInOutExpo');
-	         event.preventDefault();
-	     });
-
-		 $("#gotop").click(function(){
-	         jQuery("html,body").animate({
-	             scrollTop:0
-	         },1500);
-	     });
-
-	 });
-
+	 //preloadImg
 	 function preloadImg(image){
 		 var img = new Image();
 		 img.src = image;

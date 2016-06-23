@@ -12,6 +12,7 @@
     <link href="css/main.css" rel="stylesheet">
 
     <script src="js/jquery.js"></script>
+	<script src="js/jquery.ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.validate.js"></script>
 	<scritt src="js/jquery.validate.messages.js"></scritt>
@@ -95,6 +96,9 @@
 
 <script>
 	$(document).ready(function() {
+
+		$("#contact").fadeIn(500);
+
 		$("#contact-form").validate({
             submitHandler: function(form) {
                form.submit();

@@ -12,6 +12,7 @@
     <link href="css/main.css" rel="stylesheet">
 
     <script src="js/jquery.js"></script>
+	<script src="js/jquery.ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -208,6 +209,8 @@
 
 
 	$(document).ready(function() {
+
+		$('#album').fadeIn(500);
 
 		$('#myModal').on('shown.bs.modal', function () {
 			$('#myInput').focus();

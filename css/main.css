@@ -86,6 +86,7 @@ p {
 .main_bg .navbar{
     background: rgba(255, 255, 255, 0);
     border-color: rgba(255, 255, 255, 0);
+    display: none;
 }
 
 .navbar{
@@ -184,6 +185,7 @@ p {
 	left: 15%;
 	text-align: center;
 	text-shadow: 0 1px 2px rgba(0,0,0,.6);
+    display: none;
 }
 
 #main .main_content .btn-group{
@@ -220,12 +222,6 @@ p {
         background-color: rgba(255,255,255, 0.8) ;
         padding-top: 30px;
 	}
-    #main #content1{
-        display: none;
-    }
-    #main #content2{
-        display: block !important;
-    }
 }
 
 @media(max-width: 475px){
@@ -246,6 +242,7 @@ p {
 	padding: 50px 0 0 0;
 	text-align: center;
 	background-color: transparent;
+    display: none;
 }
 
 .singer-body1{
@@ -305,6 +302,10 @@ p {
 	text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
+.intro h1, .intro p{
+    display: none;
+}
+
 @media(max-width:768px) {
     .intro {
 		margin-top: 100px;
@@ -319,6 +320,10 @@ p {
     .intro .intro-body .intro-text {
         font-size: 25px !Important;
     }
+}
+
+#go-next{
+    display: none;
 }
 
 .row > .btn {
@@ -559,6 +564,7 @@ p {
 	padding: 100px 50px 20px 70px;
     width: 1680px;
     margin: 0 auto;
+    display: none;
 }
 
 #photo_show #show_rwd{
@@ -633,6 +639,7 @@ p {
 	overflow-x: hidden;
 	font-weight: 200;
     font-size: 14px;
+    display: none;
 }
 
 #class .title{
@@ -836,6 +843,7 @@ p {
 	padding-top: 100px;
 	padding-bottom: 20px;
 	margin: 0 auto;
+    display: none;
 }
 
 @media(max-width:767px) {
@@ -897,6 +905,7 @@ p {
     margin: 0 auto;
     width: 50%;
     padding-bottom: 20px;
+    display: none;
 }
 
 #search .col-lg-2{
@@ -940,6 +949,7 @@ p {
 	width: 45%;
 	margin: 0 auto;
     text-align: center;
+    display: none;
 }
 
 #about h3{
@@ -963,6 +973,7 @@ p {
     padding-bottom: 20px;
 	width: 50%;
 	margin: 0 auto;
+    display: none;
 }
 
 #contact-form{

@@ -12,6 +12,7 @@
     <link href="css/main.css" rel="stylesheet">
 
     <script src="js/jquery.js"></script>
+	<script src="js/jquery.ui.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </head>
 <body class="main_bg">
@@ -71,6 +72,32 @@
 	</div>
 
 <script>
+
+	$(document).ready(function(){
+
+		$('.navbar').fadeIn(1000);
+
+		x = $(window).width();
+		if (x>768){
+			$('#content1').show("drop",1300);
+		}else{
+			$('#content2').fadeIn(1300);
+	  	}
+
+		$(window).resize(function(){
+			y = $(window).width();
+			if (y>768){
+				$('#content2').hide();
+				$('#content1').show();
+			}else{
+				$('#content1').hide();
+				$('#content2').show();
+		  	}
+		});
+
+	});
+
+
 </script>
 
 </body>
