@@ -1,4 +1,4 @@
-body {
+body{
     font-family: "PingFang TC","Heiti TC","Noto Sans TC","Microsoft JhengHei";
     background-color: #f7efec;
     font-size: 16px;
@@ -839,42 +839,119 @@ p {
 }
 
 #album{
-	width: 70%;
 	padding-top: 100px;
 	padding-bottom: 20px;
+    width: 1190px;
 	margin: 0 auto;
     display: none;
 }
 
-@media(max-width:767px) {
-	#album{
-		width:95%;
-	}
-}
-
-#album #show{
-	margin-left: 15px;
-	margin-bottom: 20px;
-	width: 130px;
+#album #albums-display{
+    width: 100%;
+    margin-top: 10px;
 }
 
 #albums-display{
 	margin-top: 10px;
 }
 
+@media(max-width:1190px) {
+	#album{
+		width: 1040px;
+	}
+}
+
+@media(max-width:1040px) {
+	#album{
+		width: 870px;
+	}
+}
+
+@media(max-width:870px) {
+	#album{
+		width: 700px;
+	}
+}
+
+@media(max-width:700px) {
+	#album{
+		width: 530px;
+	}
+}
+
+@media(max-width:530px) {
+	#album{
+		width: 95%;
+	}
+    #album #albums-display{
+        text-align: center;
+    }
+}
+
+#album #show{
+	margin-left: 10px;
+	margin-bottom: 20px;
+	width: 130px;
+}
+
 #album .panel{
 	margin-bottom: 20px;
 }
 
-#album img{
-	padding: 10px;
+#album .hover_black{
+    position:relative;
+    vertical-align:top;
+    display: inline-block;
 }
 
-@media(max-width:767px) {
-	#album img{
-		padding-bottom: 30px;
-		margin: 0 auto;
-	}
+#album .hover_black:focus{
+    outline: 0;
+}
+
+#album img{
+	padding: 10px;
+    margin: 10px;
+    width: 150px;
+    vertical-align:top;
+}
+
+#album .hover_black:after, #album .hover_black:before{
+    position: absolute;
+    opacity: 0;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#album .hover_black:after {
+    content:'\A';
+    width:130px; height:130px;
+    top:0; left:0;
+    background:rgba(0,0,0,0.6);
+    margin: 20px;
+}
+#album .hover_black:before {
+    content: attr(data-name);
+    width:100%;
+    color:#fff;
+    z-index:1;
+    bottom:0;
+    padding:70px 20px;
+    text-align:center;
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+#album .hover_black:hover:after, #album .hover_black:hover:before {
+    opacity:1;
+}
+
+#album .popover{
+    width: 100%;
+    font-family: "PingFang TC","Heiti TC","Noto Sans TC","Microsoft JhengHei";
+    font-size: 16px;
+}
+
+#album .popover-title{
+    font-size: 18px;
 }
 
 #album .label{
@@ -886,6 +963,8 @@ p {
 #album ol li{
 	 margin-left: -15px;
 }
+
+
 
 #song{
 	width: 50%;

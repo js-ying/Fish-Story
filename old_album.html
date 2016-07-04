@@ -63,17 +63,6 @@
 
 	</div>
 
-	<div class="popover_title_wrapper" style="display: none">
-		<div>
-			<span class="popover_title_span"></span>
-			<span class="popover_albumtype_span"></span>
-		</div>
-	</div>
-
-	<div class="popover_content_wrapper" style="display: none">
-		<div><span class="popover_content_span"></span></div>
-	</div>
-
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -94,73 +83,123 @@
 		</div>
 	</div>
 
-	<script src="js/album_check.js"></script>
-
 <script type="text/javascript">
+
+	function type(t) {
+		switch (t) {
+			case "錄音室專輯":
+				return "record-CD";
+				break;
+			case "演唱會CD":
+				return "live-CD";
+				break;
+			case "精選輯":
+				return "special-CD";
+				break;
+		}
+	};
+
+	function label_type(ly){
+		switch (ly){
+			case "錄音室專輯":
+				return "label-info";
+				break;
+			case "演唱會CD":
+				return "label-success";
+				break;
+			case "精選輯":
+				return "label-danger";
+				break;
+		}
+	};
 
 	var build = function(data) {
 		data.album.forEach(function(cv, i, array) {
 
-			var templete = "<div class=\"hover_black\" data-name=\"" + cv.album_name + "\" data-toggle=\"popover\" data-placement=\"bottom\" tabindex=\"0\" data-trigger=\"focus\"><img class=\"img-responsive img-thumbnail " + type(cv.album_type) + "\" img-name=\"" + cv.album_name + "\" src=\"" + cv.album_img + "\"></div>"
+			var SongList = cv.album_info.reduce(function(pv, current) {
+				return (pv + "<li class='song' data-albumname='"+cv.album_name+"' data-songName='"+current.song_name+"'><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">"+current.song_name+"</a></li>");
+			}, "");
+
+			var templete = ''
+			+ '<div class="col-md-12 ' + type(cv.album_type) +'">'
+			+ '		<div class="panel panel-default">'
+			+ '			<div class="panel-body">'
+			+ '				<div class="col-md-4">'
+			+ '					<img class="img-responsive" src="' + cv.album_img + '" width=150>'
+			+ '				</div>'
+			+ '				<div class="col-md-8">'
+			+ '					<h4>' + cv.album_name + '<small><span class="label '+ label_type(cv.album_type) +'">'+ cv.album_type + '</span><br>' + cv.album_date + '</small></h4>'
+			+ ' 				<ol>'
+			+ 					SongList
+			+ '					</ol>'
+			+ '				</div>'
+			+ '			</div>'
+			+ '		</div>'
+			+ '</div>'
+
 			$("#albums-display").append(templete);
 
-			$('[data-toggle="popover"]').popover({
-				html:true,
-				title: function(){
-					return $('.popover_title_wrapper').html();
-				},
-				content: function() {
-					return $('.popover_content_wrapper').html();
-				}
-			});
-
 		});
 
-		$('.hover_black').click(function(){
-			$(".popover_title_span").html("");
-			$(".popover_albumtype_span").html("");
-			$(".popover_content_span").html("");
+		$('.song').click(function() {
+			var songName = $(this).data('songname')
+			var albumName = $(this).data('albumname')
+			var song = data.album.filter(function(cv) {
+				return cv.album_name == albumName;
+			})[0].album_info.filter(function(cv) {
+				return cv.song_name == songName;
+			})[0];
 
-			var imgName = $(this).attr('data-name');
-			$(".popover_title_span").html(imgName);
+			$(".modal-title").html(song.song_name);
+			$(".song-writer-value").html(song.song_info[0].writer);
+			$(".song-composer-value").html(song.song_info[0].composer);
+			$(".song-content-value").html(song.song_info[0].content);
 
-			$.each(data.album, function(key,value) {
-				$.each(value.album_info, function(k,v){
-					$.each(v.song_info, function(i,j){
+			var str = $(".song-content-value").html();
+			var regex = "<br />";
+			$(".song-content-value").html(str.replace(/\n/g,regex));
+		})
+	}
 
-						if (value.album_name == imgName) {
+	function changed(show){
+		switch (show.value) {
+			case "錄音室專輯":
+				show_record();
+				break;
+			case "演唱會CD":
+				show_live();
+				break;
+			case "精選輯":
+				show_special();
+				break;
+			case "全部顯示":
+				show_all();
+				break;
+		}
+	}
 
-							var TypeLabel = '<small><span class="label '+ label_type(value.album_type) +'">'+ value.album_type + '</span><br>' + value.album_date + '</small></h4>'
-							$(".popover_albumtype_span").html(TypeLabel);
+	function show_all() {
+		$(".record-CD").hide().fadeIn();
+		$(".live-CD").hide().fadeIn();
+		$(".special-CD").hide().fadeIn();
+	};
 
-	                        var SongList = "<li class=\"song\" data-albumname=\"" + value.album_name + "\" data-songName=\"" + v.song_name + "\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">" + v.song_name + "</a></li>"
-							$(".popover_content_span").append(SongList);
-						}
+	function show_record() {
+		$(".record-CD").hide().fadeIn();
+		$(".live-CD").hide();
+		$(".special-CD").hide();
+	};
 
-					});
-				});
-	        });
+	function show_live() {
+		$(".record-CD").hide();
+		$(".live-CD").hide().fadeIn();
+		$(".special-CD").hide();
+	};
 
-			$('.song').click(function() {
-				var songName = $(this).data('songname')
-				var albumName = $(this).data('albumname')
-				var song = data.album.filter(function(cv) {
-					return cv.album_name == albumName;
-				})[0].album_info.filter(function(cv) {
-					return cv.song_name == songName;
-				})[0];
-
-				$(".modal-title").html(song.song_name);
-				$(".song-writer-value").html(song.song_info[0].writer);
-				$(".song-composer-value").html(song.song_info[0].composer);
-				$(".song-content-value").html(song.song_info[0].content);
-
-				var str = $(".song-content-value").html();
-				var regex = "<br />";
-				$(".song-content-value").html(str.replace(/\n/g,regex));
-			});
-
-		});
+	function show_special() {
+		$(".record-CD").hide();
+		$(".live-CD").hide();
+		$(".special-CD").hide().fadeIn();
 	};
 
 	$.ajax({
@@ -168,11 +207,16 @@
 		dataType: 'json'
 	}).done(build);
 
+
+
 	$(document).ready(function() {
+
 		$('#album').fadeIn(500);
+
 		$('#myModal').on('shown.bs.modal', function () {
 			$('#myInput').focus();
 		});
+
 	});
 
 </script>

@@ -5,6 +5,7 @@
       "album_img": "img/album/a1.jpg",
 	  "album_type": "錄音室專輯",
 	  "album_date": "1999-09",
+      "first": true,
       "album_info": [
         {
           "song_name": "對不起我愛你",
@@ -339,6 +340,7 @@
       "album_img": "img/album/a4.jpg",
 	  "album_type": "錄音室專輯",
 	  "album_date": "2002-02",
+      "last": true,
       "album_info": [
         {
           "song_name": "Sunrise",
@@ -457,6 +459,7 @@
       "album_img": "img/album/acd1.jpg",
 	  "album_type": "演唱會CD",
 	  "album_date": "2002-05",
+      "first": true,
       "album_info": [
         {
           "song_name": "多數是晴天+明天的微笑+在晴朗的一天出發",
@@ -991,6 +994,7 @@
       "album_img": "img/album/a6.jpg",
 	  "album_type": "錄音室專輯",
 	  "album_date": "2004-09",
+      "last": true,
       "album_info": [
         {
           "song_name": "寧夏",
@@ -1377,6 +1381,7 @@
       "album_img": "img/album/a7.jpg",
       "album_type": "錄音室專輯",
       "album_date": "2005-09",
+      "first": true,
       "album_info":
       [
         {
@@ -1767,6 +1772,7 @@
       "album_img": "img/album/acd3.jpg",
       "album_type": "演唱會CD",
       "album_date": "2008-08",
+      "last": true,
       "album_info": [
         {
           "song_name": "今天情人節",
@@ -1915,6 +1921,7 @@
       "album_img": "img/album/a10.jpg",
       "album_type": "錄音室專輯",
       "album_date": "2009-01",
+      "first": true,
       "album_info":
       [
         {
@@ -2352,6 +2359,7 @@
       "album_img": "img/album/a12.jpg",
       "album_type": "錄音室專輯",
       "album_date": "2012-08",
+      "last": true,
       "album_info":
       [
         {
