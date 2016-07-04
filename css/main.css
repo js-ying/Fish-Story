@@ -948,6 +948,7 @@ p {
     width: 100%;
     font-family: "PingFang TC","Heiti TC","Noto Sans TC","Microsoft JhengHei";
     font-size: 16px;
+    margin: 0px 0px 20px 0px;
 }
 
 #album .popover-title{
