@@ -642,7 +642,7 @@ p {
     display: none;
 }
 
-#class .title{
+#photo_show .title ,#class .title{
 	font-size: 40px;
 	font-weight: 700;
 	text-align: center;
@@ -650,14 +650,18 @@ p {
 	letter-spacing: 5px;
 }
 
+#photo_show .title{
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 1280px) {
-	#class .title{
+	#photo_show .title,#class .title{
 		margin-bottom: 0px;
 	}
 }
 
 @media screen and (max-width: 480px) {
-	#class .title{
+	#photo_show .title, #class .title{
 		font-size:30px;
 		padding-left: 45px;
 		padding-right: 45px;
@@ -668,14 +672,14 @@ p {
 	border-bottom: 3px solid #bc7981;
 }
 
-#class .sub-title{
+#photo_show .sub-title, #class .sub-title{
 	font-size: 25px;
 	font-weight: 500;
 	color: gray;
 }
 
 @media screen and (max-width: 480px) {
-	#class .sub-title{
+	#photo_show .sub-title, #class .sub-title{
 		font-size:20px;
         margin-bottom: 20px;
 	}
