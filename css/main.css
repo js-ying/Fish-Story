@@ -888,14 +888,33 @@ p {
     }
 }
 
+#album .method{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+
 #album #show{
 	margin-left: 10px;
 	margin-bottom: 20px;
 	width: 130px;
 }
 
-#album .panel{
-	margin-bottom: 20px;
+#album .label{
+	float: right;
+	font-size: 12px;
+	padding: 5px 10px 7px 10px;
+}
+
+#album ol li{
+	 margin-left: -15px;
+}
+
+/*專輯陳列*/
+#album img{
+	padding: 10px;
+    margin: 10px;
+    width: 150px;
+    vertical-align:top;
 }
 
 #album .hover_black{
@@ -906,13 +925,6 @@ p {
 
 #album .hover_black:focus{
     outline: 0;
-}
-
-#album img{
-	padding: 10px;
-    margin: 10px;
-    width: 150px;
-    vertical-align:top;
 }
 
 #album .hover_black:after, #album .hover_black:before{
@@ -955,17 +967,17 @@ p {
     font-size: 18px;
 }
 
-#album .label{
-	float: right;
-	font-size: 12px;
-	padding: 5px 10px 7px 10px;
+/*展開專輯*/
+#album .panel{
+	margin-bottom: 20px;
 }
 
-#album ol li{
-	 margin-left: -15px;
+@media(max-width:530px) {
+    #album .album_center{
+        margin: 0 auto;
+        margin-bottom: 15px;
+    }
 }
-
-
 
 #song{
 	width: 50%;
@@ -980,6 +992,7 @@ p {
 	}
 }
 
+/*快速找歌*/
 #search{
     padding-top: 100px;
     margin: 0 auto;

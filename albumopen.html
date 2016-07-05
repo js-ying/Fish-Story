@@ -51,14 +51,17 @@
 
 	<div id="album">
 
-		<select class="form-control" id="show" onChange="changed(show)">
+		<a href="album.html"><button class="btn btn-danger method" style="margin-left:14px;">專輯陳列</button></a>
+		<a href="#"><button class="btn btn-danger method">展開專輯</button></a>
+
+		<select class="form-control" id="show" style="margin-left:14px;" onChange="changed(show)">
 			<option value="全部顯示">全部顯示</option>
 			<option value="錄音室專輯">錄音室專輯</option>
 			<option value="演唱會CD">演唱會CD</option>
 			<option value="精選輯">精選輯</option>
 		</select>
 
-		<div class="row" id="albums-display">
+		<div class="row" id="albums-display" style="text-align:left">
 		</div>
 
 	</div>
@@ -83,35 +86,9 @@
 		</div>
 	</div>
 
+	<script src="js/album_check.js"></script>
+
 <script type="text/javascript">
-
-	function type(t) {
-		switch (t) {
-			case "錄音室專輯":
-				return "record-CD";
-				break;
-			case "演唱會CD":
-				return "live-CD";
-				break;
-			case "精選輯":
-				return "special-CD";
-				break;
-		}
-	};
-
-	function label_type(ly){
-		switch (ly){
-			case "錄音室專輯":
-				return "label-info";
-				break;
-			case "演唱會CD":
-				return "label-success";
-				break;
-			case "精選輯":
-				return "label-danger";
-				break;
-		}
-	};
 
 	var build = function(data) {
 		data.album.forEach(function(cv, i, array) {
@@ -125,7 +102,7 @@
 			+ '		<div class="panel panel-default">'
 			+ '			<div class="panel-body">'
 			+ '				<div class="col-md-4">'
-			+ '					<img class="img-responsive" src="' + cv.album_img + '" width=150>'
+			+ '					<img class="img-responsive album_center" src="' + cv.album_img + '">'
 			+ '				</div>'
 			+ '				<div class="col-md-8">'
 			+ '					<h4>' + cv.album_name + '<small><span class="label '+ label_type(cv.album_type) +'">'+ cv.album_type + '</span><br>' + cv.album_date + '</small></h4>'
@@ -161,62 +138,17 @@
 		})
 	}
 
-	function changed(show){
-		switch (show.value) {
-			case "錄音室專輯":
-				show_record();
-				break;
-			case "演唱會CD":
-				show_live();
-				break;
-			case "精選輯":
-				show_special();
-				break;
-			case "全部顯示":
-				show_all();
-				break;
-		}
-	}
-
-	function show_all() {
-		$(".record-CD").hide().fadeIn();
-		$(".live-CD").hide().fadeIn();
-		$(".special-CD").hide().fadeIn();
-	};
-
-	function show_record() {
-		$(".record-CD").hide().fadeIn();
-		$(".live-CD").hide();
-		$(".special-CD").hide();
-	};
-
-	function show_live() {
-		$(".record-CD").hide();
-		$(".live-CD").hide().fadeIn();
-		$(".special-CD").hide();
-	};
-
-	function show_special() {
-		$(".record-CD").hide();
-		$(".live-CD").hide();
-		$(".special-CD").hide().fadeIn();
-	};
-
 	$.ajax({
 		url: 'js/album.json',
 		dataType: 'json'
 	}).done(build);
 
-
-
 	$(document).ready(function() {
-
 		$('#album').fadeIn(500);
 
 		$('#myModal').on('shown.bs.modal', function () {
 			$('#myInput').focus();
 		});
-
 	});
 
 </script>
