@@ -51,15 +51,18 @@
 
 	<div id="album">
 
-		<a href="album.html"><button class="btn btn-danger method" style="margin-left:14px;">專輯陳列</button></a>
-		<a href="#"><button class="btn btn-danger method">展開專輯</button></a>
-
-		<select class="form-control" id="show" style="margin-left:14px;" onChange="changed(show)">
-			<option value="全部顯示">全部顯示</option>
-			<option value="錄音室專輯">錄音室專輯</option>
-			<option value="演唱會CD">演唱會CD</option>
-			<option value="精選輯">精選輯</option>
-		</select>
+		<div class="form-inline">
+  			<div class= "form-group" >
+				<a href="album.html"><button class="btn btn-danger method" style="margin-left: 15px;">專輯陳列</button></a>
+				<a href="#"><button class="btn btn-danger method">展開專輯</button></a>
+				<select class="form-control" id="show" onChange="changed(show)">
+					<option value="全部顯示">全部顯示</option>
+					<option value="錄音室專輯">錄音室專輯</option>
+					<option value="演唱會CD">演唱會CD</option>
+					<option value="精選輯">精選輯</option>
+				</select>
+  			</div>
+		</div>
 
 		<div class="row" id="albums-display" style="text-align:left">
 		</div>

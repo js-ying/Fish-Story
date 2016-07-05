@@ -900,7 +900,17 @@ p {
 #album #show{
 	margin-left: 10px;
 	margin-bottom: 20px;
-	width: 130px;
+	width: 200px;
+}
+
+@media(max-width:768px) {
+    #album .method{
+        width: 45%;
+        text-align: center;
+    }
+    #album #show{
+        width: 94%;
+    }
 }
 
 #album .label{
