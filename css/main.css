@@ -1118,6 +1118,28 @@ p {
 	}
 }
 
+#vote{
+    padding-top: 100px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#vote h3{
+    text-align: center;
+	font-size: 24px !important;
+}
+
+@media(max-width:767px) {
+	#vote{
+		width: 85%;
+	}
+}
+
+#vote_result{
+    padding-top: 50px;
+}
+
 #voteform-body{
     height: 100%;
     background-color: #F6CFC6;
@@ -1126,10 +1148,6 @@ p {
 #voteform{
     padding-top: 50px;
     height: 100%;
-}
-
-#voteform iframe{
-
 }
 
 .footer{
