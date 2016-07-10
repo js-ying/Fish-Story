@@ -308,6 +308,12 @@ p {
 
 @media(max-width:768px) {
     .intro {
+		margin-top: 130px;
+    }
+}
+
+@media(max-width:320px) {
+    .intro {
 		margin-top: 100px;
     }
 }
@@ -901,6 +907,11 @@ p {
     margin-bottom: 5px;
 }
 
+#album .method2{
+    margin-left: 15px;
+    margin-bottom:15px;
+}
+
 #album #show{
 	margin-left: 10px;
 	margin-bottom: 5px;
@@ -911,6 +922,13 @@ p {
     #album .method{
         width: 45%;
         text-align: center;
+        margin-bottom:15px;
+    }
+    #album .method2{
+        width: 45%;
+        text-align: center;
+        margin-left: 10px;
+        margin-bottom:15px;
     }
     #album #show{
         width: 94%;
