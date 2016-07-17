@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="description" content="生命中不可缺少的聲音，這是一條悠游於天籟歌聲之中──魚的故事。">
     <meta name="author" content="光Guand">
 
