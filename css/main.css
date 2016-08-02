@@ -1142,10 +1142,9 @@ p {
 
 #vote{
     padding-top: 100px;
-    width: 50%;
-    margin: 0 auto;
     text-align: center;
     display: none;
+    padding-bottom: 40px;
 }
 
 #vote h3{
@@ -1153,14 +1152,34 @@ p {
 	font-size: 24px !important;
 }
 
-@media(max-width:767px) {
-	#vote{
-		width: 85%;
-	}
-}
-
 #vote_result{
     padding-top: 50px;
+}
+
+#vote span{
+    border-left: 3px solid #888888;
+    border-right: 3px solid #888888;
+    padding: 0px 10px 0px 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#vote_result #Result_PC{
+    margin: 0 auto;
+}
+
+#vote_result #Result_Mobile{
+    display: none;
+}
+
+@media(max-width:767px) {
+	#vote_result #Result_PC{
+        display: none;
+    }
+    #vote_result #Result_Mobile{
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 #voteform-body{
