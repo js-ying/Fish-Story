@@ -634,7 +634,7 @@ p {
 
 @media(max-width:540px) {
 	#photo_show{
-		padding: 70px 0px 20px 0px;
+		padding: 100px 0px 20px 0px;
 	}
 
 	#photo_show img{
