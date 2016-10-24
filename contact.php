@@ -54,7 +54,7 @@
 
 	<div id="contact">
 
-		<h3>與我聯絡<small><br>Guand.me</small></h3>
+		<h3>私訊我</h3>
 		<form class="form-horizontal" id="contact-form" role="form" method="post" enctype="multipart/form-data" action="contact.proc.php">
 		  	<div class="form-group">
 		    	<label class="col-lg-3 control-label">您的暱稱？</label>

@@ -1072,6 +1072,76 @@ p {
 	padding: 5px 10px 7px 10px;
 }
 
+#vote{
+    padding-top: 100px;
+    text-align: center;
+    display: none;
+}
+
+#vote h3{
+    text-align: center;
+	font-size: 24px !important;
+}
+
+#vote_result{
+    padding-top: 50px;
+}
+
+#vote span{
+    border-left: 3px solid #888888;
+    border-right: 3px solid #888888;
+    padding: 0px 10px 0px 10px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#vote_result #Result_PC{
+    margin: 0 auto;
+}
+
+#vote_result #Result_Mobile{
+    display: none;
+}
+
+@media(max-width:767px) {
+	#vote_result #Result_PC{
+        display: none;
+    }
+    #vote_result #Result_Mobile{
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+#voteform-body{
+    height: 100%;
+    background-color: #F6CFC6;
+}
+
+#voteform{
+    padding-top: 50px;
+    height: 100%;
+}
+
+#comments{
+    padding-top: 100px;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#comments h3 span{
+    border-left: 3px solid #888888;
+    border-right: 3px solid #888888;
+    padding: 0px 10px 0px 10px;
+}
+
+@media(max-width:767px) {
+    #comments{
+        width: 100%;        
+    }
+}
+
 #about{
     padding-top: 20px;
     padding-bottom: 10px;
@@ -1138,57 +1208,6 @@ p {
 	#contact-form .col-sm-offset-3 {
 		margin-left: 0%;
 	}
-}
-
-#vote{
-    padding-top: 100px;
-    text-align: center;
-    display: none;
-}
-
-#vote h3{
-    text-align: center;
-	font-size: 24px !important;
-}
-
-#vote_result{
-    padding-top: 50px;
-}
-
-#vote span{
-    border-left: 3px solid #888888;
-    border-right: 3px solid #888888;
-    padding: 0px 10px 0px 10px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-#vote_result #Result_PC{
-    margin: 0 auto;
-}
-
-#vote_result #Result_Mobile{
-    display: none;
-}
-
-@media(max-width:767px) {
-	#vote_result #Result_PC{
-        display: none;
-    }
-    #vote_result #Result_Mobile{
-        display: block;
-        margin: 0 auto;
-    }
-}
-
-#voteform-body{
-    height: 100%;
-    background-color: #F6CFC6;
-}
-
-#voteform{
-    padding-top: 50px;
-    height: 100%;
 }
 
 .footer{

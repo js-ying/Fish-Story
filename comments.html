@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="生命中不可缺少的聲音，這是一條悠游於天籟歌聲之中──魚的故事。">
+    <meta name="author" content="光Guand">
+
+    <title>留言板 - Fish Story 梁靜茹</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+
+    <script src="js/jquery.js"></script>
+	<script src="js/jquery.ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/navbar_effect.js"></script>
+
+	<meta property="fb:app_id" content="327409240951432">
+</head>
+<body>
+
+	<div id="fb-root"></div>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	  	<div class="navbar-header">
+    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	      		<span class="sr-only">Toggle navigation</span>
+	      		<span class="icon-bar"></span>
+	    		<span class="icon-bar"></span>
+	      		<span class="icon-bar"></span>
+	    	</button>
+	    	<a class="navbar-brand" href="./">Fish Story 梁靜茹</a>
+	  	</div>
+
+	 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+		      	<li><a href="singer.html">歌手介紹</a></li>
+		      	<li><a href="photo.html">照片欣賞</a></li>
+				<li><a href="class.html">經典歌曲</a></li>
+		      	<li><a href="album.html">歷代專輯</a></li>
+				<li><a href="search.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 快速找歌</a></li>
+	    	</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">其他 <span class="caret" style="margin-right: 10px"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="about.html">關於本站</a></li>
+					<li><a href="vote.html">投票系統</a></li>
+					<li><a href="comments.html">留言板</a></li>
+					<li><a href="contact.php">私訊我</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<div id="comments">
+		<h3><span>留言板</span></h3>
+		有什麼想說的話，歡迎在這裡留言喔！<br>
+		如果有悄悄話的需要，麻煩使用【<a href="contact.php">私訊我</a>】的功能。
+		<div class="fb-comments" data-href="http://guand.me/Fish-Story/comments.html" data-width="100%" data-numposts="10"></div>
+	</div>
+
+<script>
+
+	$(document).ready(function(){
+		$("#comments").fadeIn(500);
+	});
+
+	(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8&appId=327409240951432";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+</body>
+</html>
