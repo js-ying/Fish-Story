@@ -55,7 +55,7 @@
 
 		<div class= "row">
 			<div class="col-lg-2">
-				<select class="form-control" id="searchWhat" onChange="search()">
+				<select class="form-control" id="searchWhat">
 					<option value="找歌名">找歌名</option>
 					<option value="找作詞者">找作詞者</option>
 					<option value="找作曲者">找作曲者</option>
@@ -65,7 +65,7 @@
 			</div>
 
 			<div class="col-lg-2">
-				<select class="form-control" id="whatType" onChange="search()">
+				<select class="form-control" id="whatType">
 					<option value="錄音室專輯">錄音室專輯</option>
 					<option value="演唱會CD">演唱會CD</option>
 					<option value="精選輯">精選輯</option>
@@ -97,6 +97,8 @@
 			</div>
 		</div>
 
+		<div id="error-display" class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 找不到相關歌曲，請檢查您的搜尋條件有沒有錯誤。</div>
+
 	</div>
 
 <script>
@@ -118,6 +120,8 @@
 	function search(){
 
 		$("#search-display").html("");
+		var error_count = 0;
+		$("error-display").hide();
 
         $.each(data.album, function(key,value) {
 			$.each(value.album_info, function(k,v){
@@ -176,15 +180,18 @@
                         +" </div>"
 
 						$("#search-display").append(templete).hide().show("drop",500);
+						error_count +=1;
 					}
 
 				});
 			});
         });
 
-		if ( $("#search-display").is(":empty") ){
-			var fail_templete = '<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> 找不到相關歌曲，請檢查您的搜尋條件有沒有錯誤。</div>'
-			$("#search-display").append(fail_templete).hide().fadeIn(500);
+		if( error_count > 0 ){
+			$("#error-display").hide();
+		}
+		else{
+			$("#error-display").fadeIn(500);
 		}
 
 		var str = $("#search-display").html();
@@ -209,12 +216,14 @@
 
 	$(document).ready(function(){
 
+		$("#error-display").hide();
 		$('#search').fadeIn(500);
 
 	    $('#key').keypress(function(e){
 			if(e.keyCode==13)
 			$('#go-search-btn').click();
 	    });
+
 	});
 
 
