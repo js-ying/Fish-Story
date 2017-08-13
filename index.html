@@ -1,107 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="生命中不可缺少的聲音，這是一條悠游於天籟歌聲之中──魚的故事。">
-    <meta name="author" content="光Guand">
-
+  <head>
+    <meta charset="utf-8">
     <title>Fish Story 梁靜茹</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-
-    <script src="js/jquery.js"></script>
-	<script src="js/jquery.ui.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-	<script src="js/navbar_effect.js"></script>
-</head>
-<body class="main_bg">
-
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	  	<div class="navbar-header">
-    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	      		<span class="sr-only">Toggle navigation</span>
-	      		<span class="icon-bar"></span>
-	    		<span class="icon-bar"></span>
-	      		<span class="icon-bar"></span>
-	    	</button>
-	    	<a class="navbar-brand" href="./">Fish Story 梁靜茹</a>
-	  	</div>
-
-	 	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-		      	<li><a href="singer.html">歌手介紹</a></li>
-		      	<li><a href="photo.html">照片欣賞</a></li>
-				<li><a href="class.html">經典歌曲</a></li>
-		      	<li><a href="album.html">歷代專輯</a></li>
-				<li><a href="search.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> 快速找歌</a></li>
-	    	</ul>
-
-		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">其他 <span class="caret" style="margin-right: 10px"></span></a>
-				<ul class="dropdown-menu" role="menu">
-					<li><a href="about.html">關於本站</a></li>
-					<li><a href="vote.html">投票系統</a></li>
-					<li><a href="comments.html">留言板</a></li>
-					<li><a href="contact.php">私訊我</a></li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
-
-	<div id="main">
-
-		<div id="content1" class="main_content">
-			<h1>雋永的梁氏情歌，永遠的情歌天后</h1>
-			<h3>她是，梁靜茹</h3>
-			<div class="btn-group" role="group" aria-label="...">
-				<a href="singer.html" button type="button" class="btn btn-danger">歌手介紹</a>
-				<a href="photo.html" button type="button" class="btn btn-danger">照片欣賞</a>
-				<a href="class.html" button type="button" class="btn btn-danger">經典歌曲</a>
-				<a href="album.html" button type="button" class="btn btn-danger">歷代專輯</a>
-				<a href="search.html" button type="button" class="btn btn-danger">快速找歌</a>
-			</div>
-		</div>
-
-		<div id="content2" class="main_content" style="display:none">
-			<h3>雋永的梁氏情歌<br>
-			永遠的情歌天后</h3>
-			<h4 id="small-h4">她是，梁靜茹</h4>
-			<a href="singer.html" button class="btn btn-sm btn-danger" id="enter-btn">點此進入</a>
-		</div>
-
-	</div>
-
-<script>
-
-	$(document).ready(function(){
-
-		$('.navbar').fadeIn(1000);
-
-		x = $(window).width();
-		if (x>768){
-			$('#content1').show("drop",1300);
-		}else{
-			$('#content2').fadeIn(1300);
-	  	}
-
-		$(window).resize(function(){
-			y = $(window).width();
-			if (y>768){
-				$('#content2').hide();
-				$('#content1').show();
-			}else{
-				$('#content1').hide();
-				$('#content2').show();
-		  	}
-		});
-
-	});
-
-
-</script>
-
-</body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
