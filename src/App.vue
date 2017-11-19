@@ -61,11 +61,17 @@
 
   .navbar {
     background-color: #E8C9C9;
+    margin-bottom: 4rem;
   }
 
   body {
     background-color: #FFF0F0;
     font-size: 18px;
+    margin-bottom: 4rem;
+  }
+
+  .footer {
+    margin-top: 7rem;
   }
 
 </style>
