@@ -60,7 +60,10 @@
                       <ul>
                         <li v-for="song in content.songs">{{ song }}</li>
                       </ul>
-                      <center><button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="popover" :title="content.name" :data-content="content.about">公司簡介</button></center>
+                      <center><button type="button" class="btn btn-sm btn-primary btn-block" v-popover.top="{ name: content.id }">公司簡介</button></center>
+                      <popover :name="content.id">
+                        {{ content.about }}
+                      </popover>
                     </p>
                   </div>
                 </div>
@@ -148,6 +151,7 @@
 </template>
 
 <script>
+
   export default {
     data () {
       return {
@@ -175,6 +179,7 @@
             contents: [
               {
                 name: '滾石唱片',
+                id: 'rock',
                 about: '滾石唱片是臺灣一家大型唱片公司，由段鍾沂、段鍾潭兄弟於1980年創辦，為華人世界中規模最大的唱片業者，目前也是除日本之外亞洲最大的獨立唱片公司。旗下曾擁有魔岩唱片、風雲唱片、大海嘯唱片、電星唱片、火山唱片、龍捲風唱片等子品牌',
                 img: 'rock_logo.jpg',
                 year: '1995~2006',
@@ -182,6 +187,7 @@
               },
               {
                 name: '相信音樂',
+                id: 'bin',
                 about: '相信音樂國際股份有限公司（B\'in Music Co. Ltd）是一間以台灣為基地的唱片公司，正式成立於2006年7月1日。由滾石唱片策略長陳勇志及搖滾樂團五月天共同創立，梁靜茹為首位加盟歌手，事業範圍橫跨台灣與香港、中國大陸、馬來西亞。',
                 img: 'BinMUSIC_logo.jpg',
                 year: '2006~2009',
@@ -189,7 +195,8 @@
               },
               {
                 name: '環球唱片',
-                about: '環球唱片（Universal Music Group，簡稱 UMG）是全世界最大的唱片公司，隸屬維旺迪集團，它佔有世界唱片市場的25.6%。它於1998年收購寶麗金唱片成為全球唱片界、甚至是金融界的話題，寶麗金唱片於1898年創立，而環球唱片則於1912年成立。環球唱片公司原來只是美國電影大廠環球影業旗下的一個部門，後來環球影業在1998年從Seagram手下買入專門出版古典音樂及流行音樂唱片的寶麗金唱片公司（PolyGram），改組成為今日的環球唱片。',
+                id: 'universal',
+                about: '環球唱片（Universal Music Group，簡稱 UMG）是全世界最大的唱片公司，隸屬維旺迪集團，它佔有世界唱片市場的25.6%。',
                 img: 'universal_logo.jpg',
                 year: '2010~',
                 songs: ['情歌沒有告訴你', '愛久見人心']
@@ -304,8 +311,7 @@
           }
         }
       }
-    },
-    mounted () {}
+    }
   }
 
 </script>
@@ -418,6 +424,17 @@
 
   #company ul{
     margin-left: -1rem;
+  }
+
+  .vue-popover {
+    background: #444;
+    color: #f9f9f9;
+    line-height: 1.5;
+    padding: 15px;
+  }
+
+  .vue-popover.dropdown-position-top:before{
+    border-top: 6px solid #444;
   }
 
   .table {

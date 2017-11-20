@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Popover from 'vue-js-popover'
 
 Vue.use(Router)
+Vue.use(Popover)
 
 export default new Router({
   mode: 'history',
