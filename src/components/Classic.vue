@@ -5,138 +5,118 @@
       <div class="sub-title">唱出你的一生一世</div>
     </div>
 
-    <div class="wrapper style1">
-      <div class="inner">
-
-        <article class="feature left">
-          <img src="../assets/img/class/img1.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/RkQy3NlG1eo?autoplay=1"
-            onClick="play_video()">
+    <div class="wrapper style">
+      <div class="inner" v-for="song in songs">
+        <article :class="'feature ' + song.position">
+          <img class="img-responsive" :src="song.img" :video-source="song.video">
           <span class="video"></span>
           <div class="content">
-            <h2>愛久見人心</h2>
-            <p>
-              存一寸光陰，換一個世紀。<br> 摘一片苦心，釀一滴蜂蜜。
-            </p>
+            <h2>{{song.title}}</h2>
+            <p v-html="song.content"></p>
           </div>
         </article>
-
-        <article class="feature right">
-          <img src="../assets/img/class/img2.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/XPD-0b66Wv4?autoplay=1"
-            onClick="play_video(2)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>無條件為你</h2>
-            <p>
-              無條件為你，不顧明天的安穩。<br> 為你變堅強，相信你的眼神。
-            </p>
-          </div>
-        </article>
-
-        <article class="feature left">
-          <img src="../assets/img/class/img3.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/nDchQNPuA0k?autoplay=1"
-            onClick="play_video(3)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>勇氣</h2>
-            <p>
-              終於作了這個決定，別人怎麼說我不理，<br> 只要你也一樣的肯定。
-            </p>
-          </div>
-        </article>
-
-        <article class="feature right">
-          <img src="../assets/img/class/img4.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/K3o6SfwZq_w?autoplay=1"
-            onClick="play_video(4)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>如果有一天</h2>
-            <p>
-              如果有一天，我們再見面，時間會不會倒退一點？
-            </p>
-          </div>
-        </article>
-
-        <article class="feature left">
-          <img src="../assets/img/class/img5.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/k_l7FVsqUyM?autoplay=1"
-            onClick="play_video(5)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>可惜不是你</h2>
-            <p>
-              努力為你改變，卻變不了，預留的伏線。<br> 以為在你身邊，那也算永遠......
-            </p>
-          </div>
-        </article>
-
-        <article class="feature right">
-          <img src="../assets/img/class/img6.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/thRA-aCRREQ?autoplay=1"
-            onClick="play_video(6)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>一夜長大</h2>
-            <p>
-              那幾乎成真我們的家，<br> 你再也不想嗎？
-            </p>
-          </div>
-        </article>
-
-        <article class="feature left">
-          <img src="../assets/img/class/img7.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/KKRqKsjqySI?autoplay=1"
-            onClick="play_video(7)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>崇拜</h2>
-            <p>
-              可能的，可以的，真的可惜了。<br> 幸福好不容易，怎麼你卻不敢了呢？
-            </p>
-          </div>
-        </article>
-
-        <article class="feature right">
-          <img src="../assets/img/class/img8.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/gE6uuacCjhA?autoplay=1"
-            onClick="play_video(8)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>暖暖</h2>
-            <p>
-              都可以隨便的，你說的，我都願意去。<br> 小火車，擺動的旋律。
-            </p>
-          </div>
-        </article>
-
-        <article class="feature left">
-          <img src="../assets/img/class/img9.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/GAA8ADgR2oI?autoplay=1"
-            onClick="play_video(9)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>我喜歡</h2>
-            <p>
-              偷偷的聞著你，帶孩子氣的男人香。
-            </p>
-          </div>
-        </article>
-
-        <article class="feature right">
-          <img src="../assets/img/class/img10.jpg" class="img-responsive" video-source="https://www.youtube.com/embed/OsdMP5RiPPs?autoplay=1"
-            onClick="play_video(10)">
-          <span class="video"></span>
-          <div class="content">
-            <h2>情歌</h2>
-            <p>
-              慢動作繾綣膠卷，重播默片，定格一瞬間。<br> 我們在告別的演唱會，說好不再見。
-            </p>
-          </div>
-        </article>
-
       </div>
     </div>
 
     <div class="footer">
-      每隔一段時間就會透過<a href="vote.html">投票系統</a>的結果來決定經典歌曲TOP10喔！<br> 想要的歌沒在榜上嗎？趕快前去投票！
+      每隔一段時間就會透過
+      <a href="vote.html">投票系統</a>的結果來決定經典歌曲TOP10喔！
+      <br> 想要的歌沒在榜上嗎？趕快前去投票！
     </div>
 
   </div>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        songs: [
+          {
+            rank: '1',
+            position: 'left',
+            img: '/static/img/class/img1.jpg',
+            video: 'https://www.youtube.com/embed/RkQy3NlG1eo?autoplay=1',
+            title: '愛久見人心',
+            content: '存一寸光陰，換一個世紀。<br>摘一片苦心，釀一滴蜂蜜。'
+          },
+          {
+            rank: '2',
+            position: 'right',
+            img: '/static/img/class/img2.jpg',
+            video: 'https://www.youtube.com/embed/XPD-0b66Wv4?autoplay=1',
+            title: '無條件為你',
+            content: '無條件為你，不顧明天的安穩。<br>為你變堅強，相信你的眼神。'
+          },
+          {
+            rank: '3',
+            position: 'left',
+            img: '/static/img/class/img3.jpg',
+            video: 'https://www.youtube.com/embed/nDchQNPuA0k?autoplay=1',
+            title: '勇氣',
+            content: '終於作了這個決定，別人怎麼說我不理，<br>只要你也一樣的肯定。'
+          },
+          {
+            rank: '4',
+            position: 'right',
+            img: '/static/img/class/img4.jpg',
+            video: 'https://www.youtube.com/embed/K3o6SfwZq_w?autoplay=1',
+            title: '如果有一天',
+            content: '如果有一天，我們再見面，時間會不會倒退一點？'
+          },
+          {
+            rank: '5',
+            position: 'left',
+            img: '/static/img/class/img5.jpg',
+            video: 'https://www.youtube.com/embed/k_l7FVsqUyM?autoplay=1',
+            title: '可惜不是你',
+            content: '努力為你改變，卻變不了，預留的伏線。<br>以為在你身邊，那也算永遠......'
+          },
+          {
+            rank: '6',
+            position: 'right',
+            img: '/static/img/class/img6.jpg',
+            video: 'https://www.youtube.com/embed/thRA-aCRREQ?autoplay=1',
+            title: '一夜長大',
+            content: '那幾乎成真我們的家，<br>你再也不想嗎？'
+          },
+          {
+            rank: '7',
+            position: 'left',
+            img: '/static/img/class/img7.jpg',
+            video: 'https://www.youtube.com/embed/KKRqKsjqySI?autoplay=1',
+            title: '崇拜',
+            content: '可能的，可以的，真的可惜了。<br>幸福好不容易，怎麼你卻不敢了呢？'
+          },
+          {
+            rank: '8',
+            position: 'right',
+            img: '/static/img/class/img8.jpg',
+            video: 'https://www.youtube.com/embed/gE6uuacCjhA?autoplay=1',
+            title: '暖暖',
+            content: '都可以隨便的，你說的，我都願意去。<br>小火車，擺動的旋律。'
+          },
+          {
+            rank: '9',
+            position: 'left',
+            img: '/static/img/class/img9.jpg',
+            video: 'https://www.youtube.com/embed/GAA8ADgR2oI?autoplay=1',
+            title: '我喜歡',
+            content: '偷偷的聞著你，帶孩子氣的男人香。'
+          },
+          {
+            rank: '10',
+            position: 'right',
+            img: '/static/img/class/img10.jpg',
+            video: 'https://www.youtube.com/embed/OsdMP5RiPPs?autoplay=1',
+            title: '情歌',
+            content: '慢動作繾綣膠卷，重播默片，定格一瞬間。<br>我們在告別的演唱會，說好不再見。'
+          }
+        ]
+      }
+    }
+  }
+</script>
 
 <style scoped>
   #classic {
@@ -190,9 +170,8 @@
   img {
     cursor: pointer;
   }
-
-
   /* Wrapper */
+
   .wrapper {
     position: relative;
   }
@@ -202,24 +181,24 @@
     width: 61rem;
   }
 
-  .wrapper.style1 {
+  .wrapper.style {
     color: #777;
   }
 
-  .wrapper.style1 h1,
-  .wrapper.style1 h2,
-  .wrapper.style1 h3,
-  .wrapper.style1 h4,
-  .wrapper.style1 h5,
-  .wrapper.style1 h6 {
+  .wrapper.style h1,
+  .wrapper.style h2,
+  .wrapper.style h3,
+  .wrapper.style h4,
+  .wrapper.style h5,
+  .wrapper.style h6 {
     color: #555;
   }
 
-  .wrapper.style1 .feature {
+  .wrapper.style .feature {
     background-color: #fff;
   }
-
   /* Video */
+
   .video {
     border-radius: 0;
     border: 0;
@@ -227,8 +206,8 @@
     position: relative;
     display: none;
   }
-
   /* Feature */
+
   .feature {
     display: -moz-flex;
     display: -webkit-flex;
