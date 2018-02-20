@@ -47,6 +47,23 @@
 </script>
 
 <style>
+  @media screen and (max-width: 480px) {
+    h2{
+      font-size: 1.6rem;
+    }
+  }
+
+  .h2-muted {
+    font-size: 22px;
+    color: gray;
+  }
+
+  @media screen and (max-width: 480px) {
+    .h2-muted{
+      font-size: 18px;
+    }
+  }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
   }
@@ -67,11 +84,52 @@
   body {
     background-color: #FFF0F0;
     font-size: 18px;
-    margin-bottom: 4rem;
   }
 
   .footer {
-    margin-top: 7rem;
+    text-align: center;
+    margin: 4rem 0 2rem 0;
+  }
+
+  .underline{
+    border-bottom: 3px solid #bc7981;
+  }
+
+  .title {
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    .title {
+      margin-bottom: 2em;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .title {
+      font-size: 30px;
+      padding-left: 45px;
+      padding-right: 45px;
+    }
+  }
+
+  .title-underline {
+    border-bottom: 3px solid #bc7981;
+  }
+
+  .sub-title {
+    font-size: 25px;
+    font-weight: 500;
+    color: gray;
+  }
+
+  @media screen and (max-width: 480px) {
+    .sub-title {
+      font-size: 20px;
+    }
   }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div id="index">
+  <div class="container" id="index">
     <div id="content1" class="main_content">
         <h1>雋永的梁氏情歌，永遠的情歌天后</h1>
         <h3>她是，梁靜茹</h3>

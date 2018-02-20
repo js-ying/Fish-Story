@@ -1,5 +1,5 @@
 <template>
-  <div id="singer">
+  <div class="body-content" id="singer">
     <section id="aboutSinger" class="container content-section">
       <div class="row justify-content-md-center">
         <div class="col-lg-9">
@@ -10,7 +10,7 @@
           </div>
           <div class="panel">
             <div class="panel-body">
-              <h2>{{ singer.about.title }}<br><small class="text-muted"><i>{{ singer.about.subTitle }}</i></small></h2>
+              <h2>{{ singer.about.title }}<br><small class="h2-muted"><i>{{ singer.about.subTitle }}</i></small></h2>
               <hr class="style-seven">
               <img class="img-responsive" :src="'/static/img/' + singer.about.img">
               <div v-html="singer.about.content"></div>
@@ -30,7 +30,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-body">
-              <h2>{{ singer.debut.title }}<br><small class="text-muted"><i>{{ singer.debut.subTitle }}</i></small></h2>
+              <h2>{{ singer.debut.title }}<br><small class="h2-muted"><i>{{ singer.debut.subTitle }}</i></small></h2>
               <hr class="style-seven">
               <div v-html="singer.debut.content"></div>
             </div>
@@ -49,7 +49,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-body">
-              <h2 class="text-center">{{ singer.company.title }}<br><small class="text-muted"><i class="text-center">{{ singer.company.subTitle }}</i></small></h2>
+              <h2 class="text-center">{{ singer.company.title }}<br><small class="h2-muted"><i class="text-center">{{ singer.company.subTitle }}</i></small></h2>
               <hr class="style-seven">
               <div class="card-columns">
                 <div class="card" v-for="content in singer.company.contents">
@@ -84,7 +84,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-body">
-              <h2>{{ singer.ost.title }}<br><small class="text-muted"><i>{{ singer.ost.subTitle }}</i></small></h2>
+              <h2>{{ singer.ost.title }}<br><small class="h2-muted"><i>{{ singer.ost.subTitle }}</i></small></h2>
               <hr class="style-seven">
               <table class="table table-striped">
                 <thead>
@@ -134,7 +134,7 @@
           </div>
           <div class="panel panel-default">
             <div class="panel-body">
-              <h2>{{ singer.official.title }}<br><small class="text-muted"><i>{{ singer.official.subTitle }}</i></small></h2>
+              <h2>{{ singer.official.title }}<br><small class="h2-muted"><i>{{ singer.official.subTitle }}</i></small></h2>
               <hr class="style-seven">
               <div class="row">
                 <div class="col" v-for="content in singer.official.contents">
@@ -147,6 +147,8 @@
         </div>
       </div>
     </section>
+
+    <div class="footer"></div>
   </div>
 </template>
 
@@ -333,12 +335,6 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
 
-  @media(max-width:767px) {
-    .panel-body h2 {
-      font-size: 26px;
-    }
-  }
-
   .shape {
     float: right;
     height: 0px;
@@ -373,10 +369,6 @@
 
   h2 {
     margin: 0 50px;
-  }
-
-  .text-muted {
-    font-size: 22px;
   }
   /* Flaired edges, by Tomas Theunissen */
 

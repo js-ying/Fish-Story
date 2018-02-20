@@ -1,19 +1,19 @@
 <template>
-  <div id="classic">
+  <div class="container" id="classic">
     <div class="title">
-      <span>10</span>首不容錯過的雋永情歌
+      <span class="title-underline">10</span>首不容錯過的雋永情歌
       <div class="sub-title">唱出你的一生一世</div>
     </div>
 
     <div class="wrapper style">
       <div class="inner" v-for="(song, $index) in songs">
         <article :class="'feature ' + song.position">
-          <img class="img-responsive" v-show="!song.show" :src="song.img" @click="showVideo($index)">
+          <img class="img-fluid" v-show="!song.show" :src="song.img" @click="showVideo($index)">
           <div class="video embed-responsive embed-responsive-16by9" v-show="song.show">
             <iframe class="embed-responsive-item" :src="song.videoTemp" frameborder="0" allowfullscreen></iframe>
           </div>
           <div class="content">
-            <h2>{{song.title}}</h2>
+            <h2 class="underline">{{song.title}}</h2>
             <p v-html="song.content"></p>
           </div>
         </article>
@@ -136,54 +136,6 @@
 </script>
 
 <style scoped>
-  #classic {
-    overflow-x: hidden;
-    font-weight: 200;
-  }
-
-  .title {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 100px;
-    letter-spacing: 5px;
-  }
-
-  @media screen and (max-width: 1280px) {
-    .title {
-      margin-bottom: 0px;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .title {
-      font-size: 30px;
-      padding-left: 45px;
-      padding-right: 45px;
-    }
-  }
-
-  .title span {
-    border-bottom: 3px solid #bc7981;
-  }
-
-  .sub-title {
-    font-size: 25px;
-    font-weight: 500;
-    color: gray;
-  }
-
-  @media screen and (max-width: 480px) {
-    .sub-title {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-  }
-
-  .content h2 {
-    border-bottom: 3px solid #bc7981;
-  }
-
   img {
     cursor: pointer;
   }
@@ -309,39 +261,15 @@
   }
 
   @media screen and (max-width: 1280px) {
-    .wrapper {
-      padding: 6em 0 4em 0;
-    }
-
     .wrapper>.inner {
-      width: 70em;
+      width: 54.5em;
     }
   }
 
   @media screen and (max-width: 980px) {
-    .wrapper {
-      padding: 5em 3em 3em 3em;
-    }
-
     .wrapper>.inner {
       width: 100%;
     }
-  }
-
-  @media screen and (max-width: 736px) {
-    .wrapper {
-      padding: 3em 2em 1em 2em;
-    }
-  }
-
-  @media screen and (max-width: 480px) {
-    .wrapper {
-      padding: 2em 1em 0.1em 1em;
-    }
-  }
-
-  .footer {
-    text-align: center;
   }
 
 </style>
