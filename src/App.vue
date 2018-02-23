@@ -19,7 +19,7 @@
             <router-link to="/classic" class="nav-link">經典歌曲</router-link>
           </li>
           <li class="nav-item">
-            <router-link to="/album" class="nav-link">專輯列表</router-link>
+            <router-link to="/albums" class="nav-link">專輯列表</router-link>
           </li>
           <li class="nav-item">
             <router-link to="/vote" class="nav-link">投票專區</router-link>

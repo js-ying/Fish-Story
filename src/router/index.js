@@ -31,9 +31,9 @@ export default new Router({
       component: require('../components/Classic.vue')
     },
     {
-      path: '/album',
-      name: 'Album',
-      component: require('../components/Album.vue')
+      path: '/albums',
+      name: 'Albums',
+      component: require('../components/Albums.vue')
     },
     {
       path: '/vote',
