@@ -1,6 +1,6 @@
 # 梁靜茹 Fish-Story
 My favorite singer, Fish-Leong.<br>
-[https://guand.me/Fish-Story](https://guand.me/Fish-Story)
+Demo: [https://fish.jsy.tw](https://fish.jsy.tw)
 
 ## 歌手介紹
 讓你更加瞭解靜茹，包含基本介紹、出道過程、唱片公司、電視/電影歌曲及官方社群。
