@@ -17,6 +17,16 @@
 	<script src="js/navbar_effect.js"></script>
 	<script src="js/jquery.validate.js"></script>
 	<scritt src="js/jquery.validate.messages.js"></scritt>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D55EC92GJP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-D55EC92GJP');
+  </script>
 </head>
 <body>
 
