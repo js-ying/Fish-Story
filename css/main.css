@@ -1123,25 +1123,6 @@ p {
     height: 100%;
 }
 
-#comments{
-    padding-top: 100px;
-    width: 60%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-#comments h3 span{
-    border-left: 3px solid #888888;
-    border-right: 3px solid #888888;
-    padding: 0px 10px 0px 10px;
-}
-
-@media(max-width:767px) {
-    #comments{
-        width: 100%;        
-    }
-}
-
 #about{
     padding-top: 20px;
     padding-bottom: 10px;
