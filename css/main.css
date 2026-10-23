@@ -1006,6 +1006,11 @@ p {
     font-size: 18px;
 }
 
+#album .popover-song-list{
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
 /*展開專輯*/
 #album .panel{
 	margin-bottom: 20px;

@@ -82,17 +82,6 @@
 
 	</div>
 
-	<div class="popover_title_wrapper" style="display: none">
-		<div>
-			<span class="popover_title_span"></span>
-			<span class="popover_albumtype_span"></span>
-		</div>
-	</div>
-
-	<div class="popover_content_wrapper" style="display: none">
-		<div><span class="popover_content_span"></span></div>
-	</div>
-
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -118,68 +107,47 @@
 <script type="text/javascript">
 
 	var build = function(data) {
-		data.album.forEach(function(cv, i, array) {
+		// 依專輯名稱取得專輯資料
+		var findAlbum = function(albumName) {
+			return data.album.filter(function(cv) {
+				return cv.album_name == albumName;
+			})[0];
+		};
 
+		data.album.forEach(function(cv, i, array) {
 			var templete = "<div class=\"hover_black\" data-name=\"" + cv.album_name + "\" data-toggle=\"popover\" data-placement=\"bottom\" tabindex=\"0\" data-trigger=\"focus\"><img class=\"img-responsive img-thumbnail " + type(cv.album_type) + "\" img-name=\"" + cv.album_name + "\" src=\"" + cv.album_img + "\"></div>"
 			$("#albums-display").append(templete);
-
-			$('[data-toggle="popover"]').popover({
-				html:true,
-				delay:{show:100},
-				title: function(){
-					return $('.popover_title_wrapper').html();
-				},
-				content: function() {
-					return $('.popover_content_wrapper').html();
-				}
-			});
-
 		});
 
-		$('.hover_black').click(function(){
-			$(".popover_title_span").html("");
-			$(".popover_albumtype_span").html("");
-			$(".popover_content_span").html("");
+		// popover 標題與歌曲清單於顯示當下依該專輯產生
+		$('[data-toggle="popover"]').popover({
+			html:true,
+			delay:{show:100},
+			title: function(){
+				var album = findAlbum($(this).data('name'));
+				return '<div><span class="popover_title_span">' + album.album_name + '</span><span class="popover_albumtype_span"><small><span class="label ' + label_type(album.album_type) + '">' + album.album_type + '</span><br>' + album.album_date + '</small></span></div>';
+			},
+			content: function() {
+				var album = findAlbum($(this).data('name'));
+				var songList = album.album_info.map(function(v) {
+					return "<li class=\"song\" data-albumname=\"" + album.album_name + "\" data-songname=\"" + v.song_name + "\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">" + v.song_name + "</a></li>";
+				}).join('');
+				return '<ul class="popover-song-list">' + songList + '</ul>';
+			}
+		});
 
-			var imgName = $(this).attr('data-name');
-			$(".popover_title_span").html(imgName);
+		// 以事件委派處理歌曲點擊，popover 動態產生的 .song 也能觸發
+		$(document).on('click', '.song', function() {
+			var songName = $(this).data('songname')
+			var albumName = $(this).data('albumname')
+			var song = findAlbum(albumName).album_info.filter(function(cv) {
+				return cv.song_name == songName;
+			})[0];
 
-			$.each(data.album, function(key,value) {
-				$.each(value.album_info, function(k,v){
-					$.each(v.song_info, function(i,j){
-
-						if (value.album_name == imgName) {
-
-							var TypeLabel = '<small><span class="label '+ label_type(value.album_type) +'">'+ value.album_type + '</span><br>' + value.album_date + '</small></h4>'
-							$(".popover_albumtype_span").html(TypeLabel);
-
-	                        var SongList = "<li class=\"song\" data-albumname=\"" + value.album_name + "\" data-songName=\"" + v.song_name + "\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#myModal\">" + v.song_name + "</a></li>"
-							$(".popover_content_span").append(SongList);
-						}
-
-					});
-				});
-	        });
-
-			$('.song').click(function() {
-				var songName = $(this).data('songname')
-				var albumName = $(this).data('albumname')
-				var song = data.album.filter(function(cv) {
-					return cv.album_name == albumName;
-				})[0].album_info.filter(function(cv) {
-					return cv.song_name == songName;
-				})[0];
-
-				$(".modal-title").html(song.song_name);
-				$(".song-writer-value").html(song.song_info[0].writer);
-				$(".song-composer-value").html(song.song_info[0].composer);
-				$(".song-content-value").html(song.song_info[0].content);
-
-				var str = $(".song-content-value").html();
-				var regex = "<br />";
-				$(".song-content-value").html(str.replace(/\n/g,regex));
-			});
-
+			$(".modal-title").html(song.song_name);
+			$(".song-writer-value").html(song.song_info[0].writer);
+			$(".song-composer-value").html(song.song_info[0].composer);
+			$(".song-content-value").html(song.song_info[0].content.replace(/\n/g, "<br />"));
 		});
 	};
 
