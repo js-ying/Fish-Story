@@ -29,7 +29,7 @@
     gtag('config', 'G-D55EC92GJP');
   </script>
 </head>
-<body class="singer-body1">
+<body class="singer-body">
 
 	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	  	<div class="navbar-header">
@@ -385,10 +385,10 @@
 		$(window).scroll(function() {
 			if ( $(this).scrollTop() > 300){
 				$('#gotop').fadeIn("fast");
-				$('.singer-body1').addClass('singer-body2').removeClass('singer-body1');
+				$('.singer-body').addClass('blurred');
 			} else {
 				$('#gotop').stop().fadeOut("fast");
-				$('.singer-body2').addClass('singer-body1').removeClass('singer-body2');
+				$('.singer-body').removeClass('blurred');
 			}
 		});
 

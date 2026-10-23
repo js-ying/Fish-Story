@@ -245,35 +245,38 @@ p {
     display: none;
 }
 
-.singer-body1{
-    background-image: url('../img/singer_bg1.jpg');
+/* 背景兩層固定疊放，捲動時以 opacity 淡入模糊圖（background-image 的 transition 僅 Chromium 支援） */
+.singer-body{
+    padding-top: 50px;
+    padding-bottom: 40px;
+}
+
+.singer-body::before,
+.singer-body::after{
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
     background-repeat: no-repeat;
     background-position: center center;
-    background-attachment: fixed;
     background-size: cover;
-    padding-top: 50px;
-    padding-bottom: 40px;
-    transition: background 200ms ease-in 100ms;
 }
 
-.singer-body2{
+.singer-body::before{
+    background-image: url('../img/singer_bg1.jpg');
+}
+
+.singer-body::after{
     background-image: url('../img/singer_bg2.jpg');
-    background-repeat: no-repeat;
-    background-position: center center ;
-    background-attachment: fixed;
-    background-size: cover;
-    padding-top: 50px;
-    padding-bottom: 40px;
-    transition: background 200ms ease-in 100ms;
+    opacity: 0;
+    transition: opacity 200ms ease-in 100ms;
 }
 
-@media (max-width:768px) {
-    .singer-body1 {
-        background-attachment: scroll;
-    }
-    .singer-body2 {
-        background-attachment: scroll;
-    }
+.singer-body.blurred::after{
+    opacity: 1;
 }
 
 .intro {
