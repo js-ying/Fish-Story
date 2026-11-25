@@ -63,7 +63,7 @@
 	<div id="contact">
 
 		<h3>私訊我</h3>
-		<p class="text-center">私訊功能已關閉，若有需要請來信：<a href="#" id="contact-mail" title="點擊複製"></a></p>
+		<p class="text-center">私訊功能已關閉，若有需要請來信：<a href="#" id="contact-mail" title="複製電子郵件地址" aria-label="複製電子郵件地址"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" style="width:24px;height:24px;vertical-align:middle"><path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/></svg></a></p>
 		<form class="form-horizontal" id="contact-form" role="form">
 		<fieldset disabled>
 		  	<div class="form-group">
@@ -114,7 +114,7 @@
 
 		// 執行期才組出信箱字串，避免原始碼被爬蟲直接擷取
 		var mail = ["hi", "jsy.tw"].join("@");
-		$("#contact-mail").text(mail).attr("data-copy-email", mail);
+		$("#contact-mail").attr("data-copy-email", mail);
 	});
 </script>
 <script src="js/copy-email.js"></script>

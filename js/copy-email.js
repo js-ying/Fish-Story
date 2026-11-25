@@ -37,10 +37,10 @@
 
   // 複製並依結果提示；失敗時仍顯示地址讓使用者手動複製
   function copyEmail(email) {
-    var done = function () { showToast('已複製 e-mail 地址：' + email); };
+    var done = function () { showToast('已複製電子郵件地址：' + email); };
     var fail = function () {
       if (fallbackCopy(email)) done();
-      else showToast('請手動複製 e-mail 地址：' + email);
+      else showToast('請手動複製電子郵件地址：' + email);
     };
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(email).then(done, fail);
@@ -53,6 +53,8 @@
     var el = e.target.closest ? e.target.closest('[data-copy-email]') : null;
     if (!el) return;
     e.preventDefault();
+    // 滑鼠點擊後移除 focus 外框；鍵盤操作仍會先顯示外框
+    if (e.detail > 0 && el.blur) el.blur();
     copyEmail(el.getAttribute('data-copy-email'));
   });
 })();
