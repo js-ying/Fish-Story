@@ -46,8 +46,12 @@
     document.body.appendChild(dialog);
     toast = dialog.querySelector('.md-toast');
     dialog.querySelector('.md-copy').addEventListener('click', copy);
-    // 點背景關閉
-    dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
+    // 只在點到視窗外的背景時關閉（點視窗留白處 target 也是 dialog，需比對座標）
+    dialog.addEventListener('click', function (e) {
+      if (e.target !== dialog) return;
+      var r = dialog.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+    });
   }
 
   // 複製地址並跳出提示（提示放在 dialog 內才會顯示在 modal 上層）
