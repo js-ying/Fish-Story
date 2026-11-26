@@ -6,10 +6,11 @@
     dark: '--md-bg:rgba(255,255,255,.04);--md-text:#ebf0ff;--md-muted:rgba(235,240,255,.6);--md-border:rgba(255,255,255,.14);--md-soft:rgba(255,255,255,.1);--md-btn:rgba(255,255,255,.07);--md-btn-hover:rgba(255,255,255,.12);--md-btn-border:rgba(255,255,255,.16);--md-shadow:0 16px 40px rgba(3,8,20,.55),0 0 28px rgba(120,140,255,.12),inset 0 1px 0 rgba(255,255,255,.08);--md-btn-shadow:0 6px 18px rgba(3,8,20,.6),0 0 18px rgba(120,140,255,.06),inset 0 1px 0 rgba(255,255,255,.04);--md-toast-bg:#ebf0ff;--md-toast-text:#141a26',
   };
   var COPY_ICON = '<svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" style="width:16px;height:16px"><path fill-rule="evenodd" d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V2Zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6ZM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1H2Z"/></svg>';
-  // 玻璃模糊放在 ::before；加在 dialog 本身會讓內部 fixed 的提示改以視窗定位
+  // dialog 只當透明外框；玻璃效果放在內層 .md-card（避免 Safari 偽元素模糊殘影），提示留在卡片外才能以畫面定位
   var CSS =
-    '.md-dlg{width:min(320px,calc(100% - 32px));padding:24px;border:1px solid var(--md-border);border-radius:20px;background:var(--md-bg);color:var(--md-text);box-shadow:var(--md-shadow);text-align:center;font-size:16px;line-height:1.5;}' +
-    '.md-dlg::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);}' +
+    '.md-dlg{width:min(320px,calc(100% - 32px));max-width:none;padding:0;border:0;background:none;overflow:visible;color:var(--md-text);text-align:center;font-size:16px;line-height:1.5;}' +
+    '.md-dlg:focus{outline:none;}' +
+    '.md-card{position:relative;padding:24px;border:1px solid var(--md-border);border-radius:20px;background:var(--md-bg);box-shadow:var(--md-shadow);-webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);}' +
     '.md-dlg::backdrop{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}' +
     '.md-dlg.md-light::backdrop{background:rgba(3,8,20,.3);}' +
     '.md-dlg.md-dark::backdrop{background:rgba(3,8,20,.55);}' +
@@ -36,12 +37,13 @@
     dialog = document.createElement('dialog');
     dialog.className = 'md-dlg';
     dialog.setAttribute('aria-labelledby', 'md-title');
+    dialog.tabIndex = -1;
     dialog.innerHTML =
-      '<form method="dialog" class="md-close"><button aria-label="關閉">✕</button></form>' +
+      '<div class="md-card"><form method="dialog" class="md-close"><button aria-label="關閉">✕</button></form>' +
       '<h3 id="md-title">來信聯絡</h3>' +
       '<p class="md-addr"><span class="md-val"><span class="md-text"></span>' +
       '<button type="button" class="md-copy" title="複製電子郵件地址" aria-label="複製電子郵件地址">' + COPY_ICON + '</button></span></p>' +
-      '<a class="md-to">開啟郵件程式</a>' +
+      '<a class="md-to">開啟郵件程式</a></div>' +
       '<div class="md-toast" role="status" aria-live="polite"></div>';
     document.body.appendChild(dialog);
     toast = dialog.querySelector('.md-toast');
@@ -69,8 +71,8 @@
     }
   }
 
-  // 依觸發元素設定地址與配色後開啟
-  function open(el) {
+  // 依觸發元素設定地址與配色後開啟；滑鼠或觸控開啟時 focus 放在視窗本身，避免 Safari 在關閉鈕顯示外框
+  function open(el, byPointer) {
     if (!dialog) build();
     mail = el.getAttribute('data-mail');
     var theme = THEMES[el.getAttribute('data-mail-theme')] ? el.getAttribute('data-mail-theme') : 'light';
@@ -79,6 +81,7 @@
     dialog.querySelector('.md-text').textContent = mail;
     dialog.querySelector('.md-to').href = 'mailto:' + mail;
     dialog.showModal();
+    if (byPointer) dialog.focus();
   }
 
   document.addEventListener('click', function (e) {
@@ -87,6 +90,6 @@
     e.preventDefault();
     // 滑鼠點擊後移除 focus 外框；鍵盤操作仍會先顯示外框
     if (e.detail > 0 && el.blur) el.blur();
-    open(el);
+    open(el, e.detail > 0);
   });
 })();
